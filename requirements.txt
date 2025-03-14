@@ -1,0 +1,7 @@
+django
+django-crispy-forms
+pillow
+django-widget-tweaks
+crispy-bootstrap5
+django-tailwind
+django-browser-reload
