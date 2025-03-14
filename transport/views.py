@@ -3,6 +3,8 @@ from django.shortcuts import redirect, render
 from .models import Transport, TransportThroughLocation, TransportRequest
 from .forms import TransportForm
 from accounts.models import Profile
+from transport.models import Alert
+
 
 # Create your views here.
 def transports(request):
@@ -55,6 +57,11 @@ def transport(request, pk):
         'locations': locations
     }
     return render(request, 'transport/transport.html', context)
+
+def map(request):
+    alerts = Alert.objects.all()
+
+    return render(request, 'transport/map.html', {'alerts': alerts})
 
 def requests(request):
     user = Profile.objects.get(user=request.user)
