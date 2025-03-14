@@ -8,10 +8,10 @@
         <input type="text" name="from_location" placeholder="from_location">
         <input type="text" name="destination" placeholder="destination">
         
-        <div id="add_location_search" style="background-color: green;" onclick=add_location_search()>add location</div>
+        <div id="add_location_search" style="background-color: green; width: 150px;" onclick=add_location_search()>add location</div>
         <div id="locations_search"></div>
 
-        <button type="submit">search</button>
+        <button type="submit" style="border: 1px solid black;">search</button>
         <script>
             button_add_location_search = document.getElementById("add_location_search");
             function add_location_search(){
@@ -25,15 +25,39 @@
     </form>
 
     Linki: <br>
-    {% for transport in transports %}
-        <a href="drive/{{transport.id}}/">{{transport.from_location}} - {{transport.to_location}}: {{transport.time|date:"d.m.Y"}}</a>
-            przez: 
-            {% for location in transport.get_transport_through %}
-                {{location}} - 
-            {% endfor %}
-        </a>
-        <br>
-    {% endfor %}
+   
+
+    <div class="overflow-x-auto shadow-lg rounded-lg">
+        <table class="min-w-full bg-white border border-gray-300 table-auto">
+            <thead class="bg-gray-200">
+                <tr>
+                    <th class="px-6 py-3 text-left text-sm font-semibold text-gray-700 uppercase">Z</th>
+                    <th class="px-6 py-3 text-left text-sm font-semibold text-gray-700 uppercase">Do</th>
+                    <th class="px-6 py-3 text-left text-sm font-semibold text-gray-700 uppercase">Data</th>
+                    <th class="px-6 py-3 text-left text-sm font-semibold text-gray-700 uppercase">User</th>
+                    <th class="px-6 py-3 text-left text-sm font-semibold text-gray-700 uppercase">Przez</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+
+                {% for transport in transports %}
+                    <tr class="border-b hover:bg-gray-50" onclick='window.location="drive/{{transport.id}}/"'>
+                        <td class="px-6 py-4 text-sm text-gray-800">{{transport.from_location}}</td>
+                        <td class="px-6 py-4 text-sm text-gray-800">{{transport.to_location}}</td>
+                        <td class="px-6 py-4 text-sm text-gray-800">{{transport.time|date:"d.m.Y"}}</td>
+                        <td class="px-6 py-4 text-sm text-gray-800">{{transport.user}}</td>
+                        <td class="px-6 py-4 text-sm text-gray-800">
+                            {% for location in transport.get_transport_through %}
+                                <span class="bg-green-200 text-green-800 py-1 px-3 rounded-full">{{location}}</span>
+                            {% endfor %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
 
 
 
@@ -50,7 +74,7 @@
         <!-- DODAJ -->
         
 
-        <div id="add_location" style="background-color: green;" onclick=add_location()>add location</div>
+        <div id="add_location" style="background-color: green; width: 150px;" onclick=add_location()>add location</div>
         <div id="locations"></div>
         <script>
             button_add_location = document.getElementById("add_location");
