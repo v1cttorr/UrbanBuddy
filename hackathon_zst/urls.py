@@ -20,6 +20,9 @@ import accounts.views as accounts_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+
+    # event related
+    path('', include('events.urls')),
     
     # user related
     path('register/', accounts_views.register, name="register"),

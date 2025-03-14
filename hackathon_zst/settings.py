@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     
     # local apps
     'accounts.apps.AccountsConfig',
+    'events.apps.EventsConfig',
     
     # installed apps
     "crispy_forms",
@@ -63,7 +64,7 @@ ROOT_URLCONF = 'hackathon_zst.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [ BASE_DIR / 'templates' ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

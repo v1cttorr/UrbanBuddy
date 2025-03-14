@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    Events <br>
+
+    Dodaj wydarzenie:
+    <form method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="Dodaj">
+    </form>
+
+
+    {% for category in event_categorys %}
+        <h3>{{category.name}}</h3>
+
+        {% for event in category.get_events %}
+            {{event.title}} <br> <br>
+        {% endfor %}
+
+    {% endfor %}
+
+{% endblock %}
