@@ -24,6 +24,9 @@ urlpatterns = [
     # event related
     path('', include('events.urls')),
     
+    # gpt related
+    path('gpt/', include('gpt.urls')),
+    
     # user related
     path('register/', accounts_views.register, name="register"),
     path('profile/', accounts_views.profile, name="profile"),

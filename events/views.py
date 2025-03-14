@@ -1,8 +1,16 @@
 from django.shortcuts import redirect, render
 from .models import Event, EventCategory
 from .forms import EventForm
+from gpt.views import interests_ideas
 
 # Create your views here.
+def home(request):
+    if request.user.is_authenticated:
+        interests  = interests_ideas(request)
+        
+        return render(request, 'home.html', {'interests': interests})
+    return redirect('/login')
+
 def events(request):
     event_categorys = EventCategory.objects.all()
 
