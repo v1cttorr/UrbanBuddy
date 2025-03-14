@@ -8,6 +8,8 @@ from django.contrib.auth.models import User
 from accounts.models import Profile
 from events.models import Event
 
+from .forms import ChatBotPromptForm
+
 # Create your views here.
 @login_required
 def interests_ideas(request):
@@ -47,3 +49,25 @@ def event_ideas(request):
 
     return formatted_response
 
+@login_required
+def chat_bot(request):
+    api_key = settings.API_KEY
+    
+    if not api_key:
+        raise ValueError("API_KEY not set")
+
+    genai.configure(api_key=api_key)
+
+    model = genai.GenerativeModel('gemini-2.0-flash-lite')
+    
+    if request.method == 'POST':
+        form = ChatBotPromptForm(request.POST)
+        if form.is_valid():
+            prompt = form.cleaned_data['prompt']
+            response = model.generate_content(prompt)
+            formatted_response = mark_safe(response.text.replace("*", " "))
+            return render(request, 'gpt/chat_bot.html', {'form': form, 'response': formatted_response})
+    else:
+        form = ChatBotPromptForm()
+        response = ''
+    return render(request, 'gpt/chat_bot.html', {'form': form, 'response': f'{response}'})
