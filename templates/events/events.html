@@ -3,6 +3,13 @@
 {% block content %}
     Events <br>
 
+    <form method="GET">
+        <input type="text" name="search" placeholder="search">
+        <button type="submit">search</button>
+    </form>
+
+    <br>
+
     Dodaj wydarzenie:
     <form method="POST">
         {% csrf_token %}
@@ -11,6 +18,7 @@
     </form>
 
 
+    <!-- {% comment %}
     {% for category in event_categorys %}
         <h3>{{category.name}}</h3>
 
@@ -19,6 +27,12 @@
             <br> <br>
         {% endfor %}
 
+    {% endfor %}
+    {% endcomment %} -->
+
+    {% for event in events %}
+        <a href="{{event.pk}}/">{{event.title}}</a>
+        <br> <br>
     {% endfor %}
 
 {% endblock %}
