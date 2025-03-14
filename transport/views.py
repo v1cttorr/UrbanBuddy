@@ -8,16 +8,24 @@ from accounts.models import Profile
 def transports(request):
     transports = Transport.objects.all()
 
-    data = {
-        'user': Profile.objects.get(user=request.user)
-    }
-
-    form = TransportForm(data)
+    form = TransportForm()
 
     if request.method == 'POST':
         form = TransportForm(request.POST)
         if form.is_valid():
-            form.save()
+            instance = form.save(commit=False)
+            instance.user = Profile.objects.get(user=request.user)
+            instance.save()
+            
+            locations = request.POST.getlist('locations')
+            print(locations)
+
+            for location in locations:
+                transport_through_location = TransportThroughLocation.objects.create(
+                    transport=instance,
+                    location=location
+                )
+                transport_through_location.save()
             return redirect('transports')
 
     context = {
@@ -33,12 +41,13 @@ def transport(request, pk):
     if request.method == 'POST':
         message = request.POST.get('message')
         user = Profile.objects.get(user=request.user)
-        transport_request = TransportRequest(
+        transport_request = TransportRequest.objects.create(
             user=user,
             transport=transport,
             message=message
         )
         transport_request.save()
+
         return redirect('transport', pk=pk)
 
     context = {
