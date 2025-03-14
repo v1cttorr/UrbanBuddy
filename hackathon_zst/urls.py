@@ -17,12 +17,17 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 import accounts.views as accounts_views
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
 
     # event related
     path('', include('events.urls')),
+
+    # transport related
+    path('transport/', include('transport.urls')),
     
     # user related
     path('register/', accounts_views.register, name="register"),
@@ -37,3 +42,5 @@ urlpatterns = [
     # tailwind
     path("__reload__/", include("django_browser_reload.urls")),
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

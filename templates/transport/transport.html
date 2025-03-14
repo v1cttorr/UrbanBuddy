@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    Transport: {{transport.from_location}} - {{transport.to_location}} <br> <br>
+    Przez: <br>
+    {% for location in locations %}
+        {{location}}
+    {% endfor %}
+{% endblock %}
