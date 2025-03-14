@@ -15,7 +15,8 @@
         <h3>{{category.name}}</h3>
 
         {% for event in category.get_events %}
-            {{event.title}} <br> <br>
+            <a href="{{event.pk}}/">{{event.title}}</a>
+            <br> <br>
         {% endfor %}
 
     {% endfor %}

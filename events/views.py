@@ -21,3 +21,12 @@ def events(request):
     }
 
     return render(request, 'events/events.html', context)
+
+def event(request, pk):
+    event = Event.objects.get(id=pk)
+
+    context = {
+        'event': event,
+    }
+
+    return render(request, 'events/event.html', context)
