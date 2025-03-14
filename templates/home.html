@@ -1,47 +1,60 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}Home Page{% endblock %}
-
 {% block content %}
-   <!-- <div class="container">
-        <h1>Home page</h1>
-        <div class="interests">
-            {{ interests }}
-        </div>
-    </div>-->
     <div name="topNav" class="flex flex-row justify-between w-full">
         <div name="topNav-content" class="flex flex-row justify-between m-6 w-full">
             <div name="logo" class="flex flex-row gap-2 items-center">
                 <p class="font-semibold font-Poppins tracking-widest drop-shadow-md">UrbanBuddy</p>
             </div>
-
             <div name="menu" class="flex flex-row items-center gap-5">
-                <a href="#" class=" ml-5 mr-5 p-4 bg-black text-white" style="border-radius: 25px; padding-left:20px; padding-right: 20px; text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.8);">Start</a>
-                <a href="#" class="text-[#09151B] ml-5 mr-5" style=" text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);">About</a>
-                <a href="#" class="text-[#09151B] ml-5 mr-5"style=" text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);">Features</a>
-                <a href="#" class="text-[#09151B] ml-5 mr-5"style=" text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);">Ratings</a>
-
+                <a href="#" class="ml-5 mr-5 p-4 bg-black text-white" style="border-radius: 25px; padding-left:20px; padding-right: 20px; text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.8);">Start</a>
+                <a href="#" class="text-[#09151B] ml-5 mr-5" style="text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);">About</a>
+                <a href="#" class="text-[#09151B] ml-5 mr-5" style="text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);">Features</a>
+                <a href="#" class="text-[#09151B] ml-5 mr-5" style="text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);">Ratings</a>
             </div>
             <div name="loginAndSignUp" class="flex flex-row items-center gap-5 mr-6">
                 <div class="flex flex-row items-center">
-                    <a name="login" href="#" class="border-2 border-[#09151B] p-4 shadow-md" style="border-radius: 30px; padding-right: 24px;padding-left: 24px;">Login</a>
-                    <a name="register" href="#" class="border-2 border-[#09151B] p-4  text-white bg-[#09151B] shadow-md" style="border-radius: 30px; padding-right: 24px;padding-left: 24px;margin-left:10px">Register</a>
+                    <a name="login" href="#" class="border-2 border-[#09151B] p-4 shadow-md" style="border-radius: 30px; padding-right: 24px; padding-left: 24px;">Login</a>
+                    <a name="register" href="#" class="border-2 border-[#09151B] p-4 text-white bg-[#09151B] shadow-md" style="border-radius: 30px; padding-right: 24px; padding-left: 24px; margin-left:10px">Register</a>
                 </div>
             </div>
         </div>
     </div>
-    <div name="main" class="w-full flex-row flex justify-center mt-[5%]">
-        <div name="main-content" class="flex flex-row m-10 w-[80%]">
-            <div name="left" class="flex flex-col">
+    <div name="main" class="w-full flex justify-center">
+        <div name="main-content" class="flex flex-row m-10 w-[80%] items-center justify-between">
+            <div name="left" class="flex flex-col w-1/2">
                 <p class="text-[64px] font-semibold" style="line-height: 1.1">Explore <span class="text-[32px]">with</span></p>
                 <p class="text-[64px] font-semibold" style="line-height:1.1">UrbanBuddy</p>
-                <div name="buttons" class="mt-5">
-                    <a href="#" class="border-2 border-[#09151B] p-4 shadow-md" style="border-radius: 30px; padding-right: 24px;padding-left: 24px;">See more</a>
-                    <a href="#" class="border-2 border-[#09151B] p-4 shadow-md" style="border-radius: 30px; padding-right: 24px;padding-left: 24px;">Register</a>
+                <div name="buttons" class="mt-5 flex gap-4">
+                    <a href="#" class="border-2 border-[#09151B] p-4 shadow-md" style="border-radius: 30px; padding-right: 24px; padding-left: 24px;">See more</a>
+                    <a href="#" class="border-2 border-[#09151B] p-4 shadow-md" style="border-radius: 30px; padding-right: 24px; padding-left: 24px;">Register</a>
                 </div>
                 <div name="desc">
                     <p class="text-[16px] mt-8" style="max-width: 400px;">Discover the best spots, plan your routes, and get smart recommendations tailored to your preferences. Urban Buddy helps you find top restaurants, events, and attractions nearby – all in one place!</p>
                 </div>
+                <div name="info" class="flex flex-row" style="margin-top:50px; gap:20px;">
+                    <div name="users" class="flex flex-col ml-5 items-center justify-center">
+                        <img src="{% static 'img/user.png' %}" alt="users" class="h-10">
+                        <p><span name="nOfUsers" class="text-center">5k+</span></p>
+                        <p>Users</p>
+                    </div>
+                    <div name="users" class="flex flex-col ml-5 items-center justify-center p-6 border-l-2 border-r-2 border-black" style="border-left:2px solid black;border-right:2px solid black">
+                        <img src="{% static 'img/monitor.png' %}" alt="users" class="h-10">
+                        <p><span name="nOfUsers" class="text-center">2k+</span></p>
+                        <p>active</p>
+                        <p>users</p>
+                    </div>
+                    <div name="users" class="flex flex-col ml-5 items-center justify-center">
+                        <img src="{% static 'img/star_filled.png' %}" alt="users" class="h-10">
+                        <p><span name="nOfUsers" class="text-center">3k+</span></p>
+                        <p>ratings</p>
+                    </div>
+                </div>
+            </div>
+            <div name="right" class="w-1/2 flex justify-center">
+                <img src="{% static 'img/city.png' %}" alt="city" class="max-w-full h-auto">
             </div>
         </div>  
         <!--
@@ -51,4 +64,39 @@
         </div> 
         -->
     </div>
+    <div name="presentation" class="flex w-full justify-center py-52" style="margin-top:200px; margin-bottom:200px">
+        <div class="flex flex-col ">
+            <p style="line-height: 1;">Like never before</p>
+            <p class="font-semibold" style="font-size:128px; line-height: 1;">Explore</p>
+        </div>
+    </div>
+    <div name="about" class="flex w-full justify-center">
+        <div name="about-content" class="m-10 mt-[10%] flex flex-col">
+            <div>
+                <p name="sectionName"  class="border-2 border-black rounded-lg p-2 text-center">About</p>
+                <p class="text-[64px]" name="sectionDesc">Meet UrbanBuddy</p>
+            </div>
+        </div>
+    </div>
+    <div name="aboutContent" class="w-[80%] flex flex-col justify-center items-center mx-auto">
+        <div name="s1" class="bg-black w-[80%] flex flex-col p-5 mx-auto rounded-xl mt-8">
+            <div name="s-content" class="p-5 m-5 flex- flex-col items-center ">
+                <p style="font-size:48px; padding: 10px; color:white">What is Urban Buddy?</p>
+                <p class="text-white" name="info">is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It ha</p>
+            </div>
+        </div>
+        <div name="s1" class="bg-black w-[80%] flex flex-col p-5 mx-auto rounded-xl mt-8">
+            <div name="s-content" class="p-5 m-5 flex- flex-col items-center">
+                <p style="font-size:48px; padding: 10px; color:white">What is Urban Buddy?</p>
+                <p class="text-white" name="info">is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It ha</p>
+            </div>
+        </div>
+        <div name="s1" class="bg-black w-[80%] flex flex-col p-5 mx-auto rounded-xl mt-8">
+            <div name="s-content" class="p-5 m-5 flex- flex-col items-center">
+                <p style="font-size:48px; padding: 10px; color:white">What is Urban Buddy?</p>
+                <p class="text-white" name="info">is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It ha</p>
+            </div>
+        </div>
+    </div>
+    
 {% endblock %}
