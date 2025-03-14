@@ -24,7 +24,7 @@ class Profile(models.Model):
 
     profile_picture = models.ImageField(upload_to=get_upload_path, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
-    
+    interests = models.TextField(blank=True, null=True)
 
     def __str__(self):
         return self.user.username
