@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block title %}Map{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+<style>
+    #map { height: 500px; width: 500px; }
+</style>
+{% endblock %}
+
+
+{% block content %}
+    <h2>Find Location by Address</h2>
+    <input type="text" id="address" placeholder="Enter address (e.g., Paris, France)">
+    <button onclick="searchAddress()">Search</button>
+    <p id="result"></p>
+    <div id="map"></div>
+
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script>
+        var map = L.map('map').setView([50.261944, 22.418917], 13);
+
+        // Add OpenStreetMap tiles
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+
+        var marker;
+
+        function searchAddress() {
+            var address = document.getElementById("address").value;
+            if (!address) {
+                alert("Please enter an address!");
+                return;
+            }
+
+            // Nominatim API for geocoding
+            var url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}`;
+
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.length > 0) {
+                        var lat = data[0].lat;
+                        var lon = data[0].lon;
+
+                        document.getElementById("result").innerText = `Coordinates: ${lat}, ${lon}`;
+
+                        map.setView([lat, lon], 13);
+
+                        if (marker) map.removeLayer(marker);
+
+                        marker = L.marker([lat, lon]).addTo(map)
+                            .bindPopup(`Address: ${address}`)
+                            .openPopup();
+                    } else {
+                        alert("Address not found!");
+                    }
+                })
+                .catch(error => console.log("Error:", error));
+        }
+
+        function make_marker(address, alert_name) {
+            var url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}`;
+
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.length > 0) {
+                        var lat = data[0].lat;
+                        var lon = data[0].lon;
+
+                        marker = L.marker([lat, lon]).addTo(map)
+                            .bindPopup(`${alert_name}: ${address}`)
+                            .openPopup();
+                    } else {
+                        alert("Address not found!");
+                    }
+                })
+                .catch(error => console.log("Error:", error));
+        }
+
+        
+    </script>
+
+    {% for alert in alerts %}
+        <script>
+            make_marker("{{ alert.address }}", "{{ alert.name }}");
+        </script>
+    {% endfor %}
+{% endblock %}

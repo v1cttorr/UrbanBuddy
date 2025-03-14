@@ -3,6 +3,27 @@
 {% block content %}
     Transports <br> <br>  
 
+    Search transports: <br>
+    <form method="GET">
+        <input type="text" name="from_location" placeholder="from_location">
+        <input type="text" name="destination" placeholder="destination">
+        
+        <div id="add_location_search" style="background-color: green;" onclick=add_location_search()>add location</div>
+        <div id="locations_search"></div>
+
+        <button type="submit">search</button>
+        <script>
+            button_add_location_search = document.getElementById("add_location_search");
+            function add_location_search(){
+                let input_add_location = document.createElement("input");
+                input_add_location.placeholder = "add location";
+                input_add_location.name = "locations_search";
+                let locations = document.getElementById("locations_search");
+                locations.appendChild(input_add_location);
+            }
+        </script>
+    </form>
+
     Linki: <br>
     {% for transport in transports %}
         <a href="drive/{{transport.id}}/">{{transport.from_location}} - {{transport.to_location}}: {{transport.time|date:"d.m.Y"}}</a>
