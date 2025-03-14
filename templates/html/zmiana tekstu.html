@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center; /* Centruje w poziomie */
+            align-items: center; /* Centruje w pionie */
+            font-family: Arial, sans-serif;
+        }
+        .napis {
+            font-size: 40px;
+        }
+        .span_explore {
+            display: inline-block;
+            opacity: 1;
+            animation: fadeInOut 4s ease-in-out infinite;
+        }
+        .span_with{
+            font-size: 60px;
+            font-style: italic;
+            vertical-align: sub;
+        }
+        .UrbanBuddy_text{
+            color: rgb(78, 78, 78);
+        }
+
+        @keyframes fadeInOut {
+            0% {
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="napis">
+        <h1><span id="span_explore" class="span_explore">Explore</span> <span id="span_with" class="span_with">with</span></h1>
+        <h1 class="UrbanBuddy_text">UrbanBuddy</h1>
+    </div>
+
+    <script>
+        const texts = ["Explore", "Discover", "Experience", "Enjoy"];
+        let currentText = 0;
+
+        function changeText() {
+            let explore = document.getElementById("span_explore");
+            explore.textContent = texts[currentText]; // Zmieniamy tekst
+            currentText++;
+
+            if (currentText >= texts.length) {
+                currentText = 0;
+            }
+
+            // Resetowanie animacji
+            explore.classList.remove("span_explore"); // Usuwamy starą klasę
+            void explore.offsetWidth; // Wymuszamy przerywanie animacji
+            explore.classList.add("span_explore"); // Dodajemy klasę animacji ponownie
+        }
+
+        setInterval(changeText, 4000); // Zmiana tekstu co 3 sekundy
+    </script>
+</body>
+</html>

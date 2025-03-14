@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .element {
+            width: 200px;
+            height: 200px;
+            animation: testAnimationA 1s 0s alternate both;
+            position: relative; /* Dodane, by przesuwać element */
+        }
+
+
+
+        @keyframes testAnimationA {
+            0% {
+                transform: translateY(0); /* Początkowe pozycje */
+            }
+            50% {
+                
+            }
+            100% {
+                transform: translateY(100px); /* Przesunięcie w dół */
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <p id="element" class="element">Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+        Rerum doloremque, odio quae possimus eos laudantium libero 
+        pariatur ex voluptas, itaque nisi, delectus numquam id impedit 
+        voluptatibus nemo necessitatibus culpa optio? Cumque dicta 
+        aliquam iusto, quibusdam commodi necessitatibus est nesciunt 
+        laudantium unde debitis quod quam sint explicabo magni, 
+        perspiciatis sed aperiam.</p>
+
+</body>
+</html>
