@@ -1,5 +1,5 @@
 from django.shortcuts import redirect, render
-from .models import Event, EventCategory
+from .models import Event
 from .forms import EventForm
 from gpt.views import interests_ideas, event_ideas
 

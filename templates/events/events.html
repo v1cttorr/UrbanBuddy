@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% load widget_tweaks %}
+
 {% block content %}
     Events <br>
 
@@ -10,12 +12,67 @@
 
     <br>
 
-    Dodaj wydarzenie:
-    <form method="POST">
+    <!-- Dodaj wydarzenie: -->
+    <!-- <form method="POST">
         {% csrf_token %}
         {{form.as_p}}
         <input type="submit" value="Dodaj">
-    </form>
+    </form> -->
+
+    <div class="max-w-2xl mx-auto p-6 bg-white rounded-lg shadow-lg">
+        <h2 class="text-2xl font-semibold text-gray-800 mb-6">Create Event</h2>
+        
+        <form method="POST">
+            {% csrf_token %}
+            <!-- Title Field -->
+            <div class="mb-4">
+                <label for="title" class="block text-gray-700 font-medium">Event Title</label>
+                <!-- <input type="text" id="title" name="title" class="w-full mt-2 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter event title"> -->
+                {% render_field form.title id="title" name="title" class="w-full mt-2 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter event title" %}
+            </div>
+    
+            <!-- Description Field -->
+            <div class="mb-4">
+                <label for="desc" class="block text-gray-700 font-medium">Description</label>
+                <!-- <textarea id="desc" name="desc" rows="4" class="w-full mt-2 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Describe the event"></textarea> -->
+                {% render_field form.description id="desc" name="desc" rows="4" class="w-full mt-2 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Describe the event" %}
+            </div>
+    
+            <!-- Category Field -->
+            <div class="mb-4">
+                <label for="category" class="block text-gray-700 font-medium">Category</label>
+                <!-- <select id="category" name="category" class="w-full mt-2 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">Select Category</option>
+                    <option value="conference">Conference</option>
+                    <option value="workshop">Workshop</option>
+                    <option value="seminar">Seminar</option>
+                    <option value="webinar">Webinar</option>
+                </select> -->
+                {% render_field form.category id="category" name="category" class="w-full mt-2 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" %}
+            </div>
+    
+            <!-- Date Field -->
+            <div class="mb-4">
+                <label for="date" class="block text-gray-700 font-medium">Event Date</label>
+                <!-- <input type="date" id="date" name="date" class="w-full mt-2 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"> -->
+                {% render_field form.date type="date" id="date" name="date" class="w-full mt-2 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" %}
+            </div>
+    
+            <!-- Location Field -->
+            <div class="mb-6">
+                <label for="location" class="block text-gray-700 font-medium">Event Location</label>
+                <!-- <input type="text" id="location" name="location" class="w-full mt-2 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter event location"> -->
+                {% render_field form.location id="location" name="location" class="w-full mt-2 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter event location" %}
+            </div>
+    
+            <!-- Submit Button -->
+            <div class="flex justify-end">
+                <button type="submit" class="bg-blue-500 text-black px-6 py-3 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    Create Event
+                </button>
+            </div>
+        </form>
+    </div>
 
 
     <!-- {% comment %}
