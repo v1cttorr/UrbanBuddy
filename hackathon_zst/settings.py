@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
     'events.apps.EventsConfig',
     'gpt.apps.GptConfig',
-    
+    'transport.apps.TransportConfig',
+
     # installed apps
     "crispy_forms",
     'crispy_bootstrap5',
