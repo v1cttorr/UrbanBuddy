@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load static %}
+{% load widget_tweaks %}
+{% block title %}
+    Register
+{% endblock %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <div class="container">
+        <h1>Register</h1>
+        <form method="post" class="form-group">
+            {% csrf_token %}
+            {% crispy form %}
+            <button type="submit" class="btn btn-primary">Register</button>
+        </form>
+    </div>
+    
+{% endblock %}
