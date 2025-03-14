@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    Transports <br> <br>  
+
+    Linki: <br>
+    {% for transport in transports %}
+        <a href="drive/{{transport.id}}/">{{transport.from_location}} - {{transport.to_location}}</a> <br>
+    {% endfor %}
+
+    <br> <br>
+    <h1>Dodaj transport</h1>
+    {{form.as_p}}
+
+
+    <!-- DODAC LOKALIZACJE PRZEZ KTORE PRZEJEZDZA -->
+    <!-- LOKALIZACJA -->
+    <!-- LOKALIZACJA -->
+    <!-- DODAJ -->
+{% endblock %}

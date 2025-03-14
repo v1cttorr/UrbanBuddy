@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     # local apps
     'accounts.apps.AccountsConfig',
     'events.apps.EventsConfig',
+    'transport.apps.TransportConfig',
     
     # installed apps
     "crispy_forms",
