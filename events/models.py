@@ -14,6 +14,7 @@ class EventCategory(models.Model):
         return self.name
 
 class Event(models.Model):
+    user = models.ForeignKey('auth.User', on_delete=models.CASCADE, null=True, blank=True)
     title = models.CharField(max_length=200)
     description = models.TextField()
     category = models.ForeignKey(EventCategory, on_delete=models.CASCADE)
@@ -23,3 +24,11 @@ class Event(models.Model):
 
     def __str__(self):
         return self.title
+    
+    @property
+    def imageURL(self):
+        try:
+            url = self.image.url
+        except:
+            url = ''
+        return url
