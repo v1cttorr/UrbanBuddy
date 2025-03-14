@@ -1,23 +1,26 @@
 from django.db import models
 
 # Create your models here.
-class EventCategory(models.Model):
-    name = models.CharField(max_length=200)
-    description = models.TextField()
-    image = models.ImageField(upload_to='events/category/', null=True, blank=True)
 
-    @property
-    def get_events(self):
-        return self.event_set.all()
-
-    def __str__(self):
-        return self.name
 
 class Event(models.Model):
+    category_choices = (
+        ('Music', 'Music'),
+        ('Sport', 'Sport'),
+        ('Art', 'Art'),
+        ('Theatre', 'Theatre'),
+        ('Comedy', 'Comedy'),
+        ('Festival', 'Festival'),
+        ('Exhibition', 'Exhibition'),
+        ('Conference', 'Conference'),
+        ('Party', 'Party'),
+        ('Other', 'Other'),
+    )
+
     user = models.ForeignKey('auth.User', on_delete=models.CASCADE, null=True, blank=True)
     title = models.CharField(max_length=200)
     description = models.TextField()
-    category = models.ForeignKey(EventCategory, on_delete=models.CASCADE)
+    category = models.CharField(choices=category_choices, max_length=100, default='Other')
     date = models.DateTimeField()
     location = models.CharField(max_length=200)
     image = models.ImageField(upload_to='events/images/', null=True, blank=True)
