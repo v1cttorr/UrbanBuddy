@@ -17,3 +17,12 @@ class TransportThroughLocation(models.Model):
 
     def __str__(self):
         return self.location
+    
+class Alert(models.Model):
+    user = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    name = models.TextField()
+    time = models.DateTimeField()
+    address = models.CharField(max_length=100, default='Leżajsk, Mickiewicza 67')
+    
+    def __str__(self):
+        return self.name
