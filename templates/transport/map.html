@@ -14,19 +14,29 @@
     <h2>Find Location by Address</h2>
     <input type="text" id="address" placeholder="Enter address (e.g., Paris, France)">
     <button onclick="searchAddress()">Search</button>
+    <select name="color" id="color">
+        <option value="red">Red</option>
+        <option value="green">Green</option>
+        <option value="yellow">Yellow</option>
+    </select> <br>
+    Red - caffee <br>
+    Green - restaurant <br>
+    Yellow - shop <br>
     <p id="result"></p>
     <div id="map"></div>
+
 
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <script>
         var map = L.map('map').setView([50.261944, 22.418917], 13);
 
-        // Add OpenStreetMap tiles
+        // Dodanie warstwy OpenStreetMap
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '© OpenStreetMap contributors'
         }).addTo(map);
 
-        var marker;
+        var markers = []; // Lista markerów
+        var distanceThreshold = 50; // Próg odległości w metrach
 
         function searchAddress() {
             var address = document.getElementById("address").value;
@@ -35,30 +45,25 @@
                 return;
             }
 
-            // Nominatim API for geocoding
             var url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}`;
 
+            
             fetch(url)
                 .then(response => response.json())
                 .then(data => {
                     if (data.length > 0) {
-                        var lat = data[0].lat;
-                        var lon = data[0].lon;
+                        var lat = parseFloat(data[0].lat);
+                        var lon = parseFloat(data[0].lon);
 
-                        document.getElementById("result").innerText = `Coordinates: ${lat}, ${lon}`;
-
+                        document.getElementById("result").innerText = `Współrzędne: ${lat}, ${lon}`;
                         map.setView([lat, lon], 13);
-
-                        if (marker) map.removeLayer(marker);
-
-                        marker = L.marker([lat, lon]).addTo(map)
-                            .bindPopup(`Address: ${address}`)
-                            .openPopup();
+                        var color = document.getElementById("color").value;
+                        addMarker(lat, lon, `Adres: ${address}`, color);
                     } else {
-                        alert("Address not found!");
+                        alert("Nie znaleziono adresu!");
                     }
                 })
-                .catch(error => console.log("Error:", error));
+                .catch(error => console.log("Błąd:", error));
         }
 
         function make_marker(address, alert_name) {
@@ -68,23 +73,105 @@
                 .then(response => response.json())
                 .then(data => {
                     if (data.length > 0) {
-                        var lat = data[0].lat;
-                        var lon = data[0].lon;
-
-                        marker = L.marker([lat, lon]).addTo(map)
-                            .bindPopup(`${alert_name}: ${address}`)
-                            .openPopup();
+                        var lat = parseFloat(data[0].lat);
+                        var lon = parseFloat(data[0].lon);
+                        addMarker(lat, lon, `${alert_name}: ${address}`, 'blue');
                     } else {
-                        alert("Address not found!");
+                        alert("Nie znaleziono adresu!");
                     }
                 })
-                .catch(error => console.log("Error:", error));
+                .catch(error => console.log("Błąd:", error));
         }
+
+        function haversine(lat1, lon1, lat2, lon2) {
+            var R = 6371000; // Promień Ziemi w metrach
+            var dLat = (lat2 - lat1) * Math.PI / 180;
+            var dLon = (lon2 - lon1) * Math.PI / 180;
+
+            var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                    Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+                    Math.sin(dLon / 2) * Math.sin(dLon / 2);
+
+            var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+            return R * c; // Odległość w metrach
+        }
+
+        function addMarker(lat, lon, popupText, color) {
+            var marker = L.marker([lat, lon], {
+                icon: L.icon({
+                    iconUrl: `https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-${color}.png`,
+                    shadowUrl: `https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png`,
+                    iconSize: [25, 41],
+                    iconAnchor: [12, 41],
+                    popupAnchor: [1, -34],
+                    shadowSize: [41, 41]
+                })
+            }).addTo(map)
+                .bindPopup(popupText);
+
+            marker.on('click', function () {
+                map.removeLayer(marker);
+                markers = markers.filter(m => m !== marker);
+            });
+
+            markers.push(marker);
+        }
+
+        map.on('click', function(e) {
+            var lat = e.latlng.lat;
+            var lon = e.latlng.lng;
+            var color = document.getElementById("color").value;
+            console.log(color);
+
+            let nearbyMarker = null;
+
+            markers.forEach(m => {
+                var markerLat = m.getLatLng().lat;
+                var markerLon = m.getLatLng().lng;
+                var distance = haversine(markerLat, markerLon, lat, lon);
+
+                if (distance <= distanceThreshold) {
+                    nearbyMarker = m;
+                }
+            });
+
+            if (nearbyMarker) {
+                // Jeśli znaleziono marker w pobliżu - usuń go
+                map.removeLayer(nearbyMarker);
+                markers = markers.filter(m => m !== nearbyMarker);
+                
+            } else {
+                // Jeśli nie ma w pobliżu - dodaj nowy marker
+                addMarker(lat, lon, `Kliknięte współrzędne: ${lat.toFixed(5)}, ${lon.toFixed(5)}`, color);
+                $.ajax({
+                url: 'add_point/',
+                type: 'POST',
+                data: {
+                    'latitude': lat,
+                    'longitude': lon,
+                    'color': color
+                },
+                headers: {
+                    'X-CSRFToken': '{{ csrf_token }}'
+                },
+                success: function (data) {
+                    
+                }
+            });
+            }
+        });
+        
     </script>
 
     {% for alert in alerts %}
         <script>
             make_marker("{{ alert.address }}", "{{ alert.name }}");
+        </script>
+    {% endfor %}
+
+    {% for point in points %}
+        <script>
+            addMarker("{{ point.latitude }}", "{{ point.longitude }}", " ", "{{ point.color }}");
         </script>
     {% endfor %}
 {% endblock %}
