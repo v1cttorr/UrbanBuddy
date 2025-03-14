@@ -13,7 +13,7 @@ def home(request):
     return redirect('/login')
 
 def events(request):
-    event_categorys = EventCategory.objects.all()
+    events = Event.objects.all().order_by('-date', 'category')
 
     form = EventForm()
 
@@ -24,8 +24,13 @@ def events(request):
 
             return redirect('events')
 
+    if request.method == 'GET':
+        search = request.GET.get('search')
+        if search:
+            events = Event.objects.filter(title__icontains=search).order_by('-date', 'category')
+
     context = {
-        'event_categorys': event_categorys,
+        'events': events,
         'form': form,
     }
 
