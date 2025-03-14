@@ -34,6 +34,24 @@
                 <div name="desc">
                     <p class="text-[16px] mt-8" style="max-width: 400px;">Discover the best spots, plan your routes, and get smart recommendations tailored to your preferences. Urban Buddy helps you find top restaurants, events, and attractions nearby – all in one place!</p>
                 </div>
+                <div name="info" class="flex flex-row" style="margin-top:50px; gap:20px;">
+                    <div name="users" class="flex flex-col ml-5 items-center justify-center">
+                        <img src="{% static 'img/user.png' %}" alt="users" class="h-10">
+                        <p><span name="nOfUsers" class="text-center">5k+</span></p>
+                        <p>Users</p>
+                    </div>
+                    <div name="users" class="flex flex-col ml-5 items-center justify-center p-6 border-l-2 border-r-2 border-black" style="border-left:2px solid black;border-right:2px solid black">
+                        <img src="{% static 'img/monitor.png' %}" alt="users" class="h-10">
+                        <p><span name="nOfUsers" class="text-center">2k+</span></p>
+                        <p>active</p>
+                        <p>users</p>
+                    </div>
+                    <div name="users" class="flex flex-col ml-5 items-center justify-center">
+                        <img src="{% static 'img/star_filled.png' %}" alt="users" class="h-10">
+                        <p><span name="nOfUsers" class="text-center">3k+</span></p>
+                        <p>ratings</p>
+                    </div>
+                </div>
             </div>
             <div name="right" class="w-1/2 flex justify-center">
                 <img src="{% static 'img/city.png' %}" alt="city" class="max-w-full h-auto">
@@ -46,4 +64,39 @@
         </div> 
         -->
     </div>
+    <div name="presentation" class="flex w-full justify-center py-52" style="margin-top:200px; margin-bottom:200px">
+        <div class="flex flex-col ">
+            <p style="line-height: 1;">Like never before</p>
+            <p class="font-semibold" style="font-size:128px; line-height: 1;">Explore</p>
+        </div>
+    </div>
+    <div name="about" class="flex w-full justify-center">
+        <div name="about-content" class="m-10 mt-[10%] flex flex-col">
+            <div>
+                <p name="sectionName"  class="border-2 border-black rounded-lg p-2 text-center">About</p>
+                <p class="text-[64px]" name="sectionDesc">Meet UrbanBuddy</p>
+            </div>
+        </div>
+    </div>
+    <div name="aboutContent" class="w-[80%] flex flex-col justify-center items-center mx-auto">
+        <div name="s1" class="bg-black w-[80%] flex flex-col p-5 mx-auto rounded-xl mt-8">
+            <div name="s-content" class="p-5 m-5 flex- flex-col items-center ">
+                <p style="font-size:48px; padding: 10px; color:white">What is Urban Buddy?</p>
+                <p class="text-white" name="info">is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It ha</p>
+            </div>
+        </div>
+        <div name="s1" class="bg-black w-[80%] flex flex-col p-5 mx-auto rounded-xl mt-8">
+            <div name="s-content" class="p-5 m-5 flex- flex-col items-center">
+                <p style="font-size:48px; padding: 10px; color:white">What is Urban Buddy?</p>
+                <p class="text-white" name="info">is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It ha</p>
+            </div>
+        </div>
+        <div name="s1" class="bg-black w-[80%] flex flex-col p-5 mx-auto rounded-xl mt-8">
+            <div name="s-content" class="p-5 m-5 flex- flex-col items-center">
+                <p style="font-size:48px; padding: 10px; color:white">What is Urban Buddy?</p>
+                <p class="text-white" name="info">is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It ha</p>
+            </div>
+        </div>
+    </div>
+    
 {% endblock %}
