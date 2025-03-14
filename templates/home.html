@@ -99,29 +99,156 @@
             </div>
         </div>
     </div>
-    {% else %}
-    <div class="events">
-        <div class="max-w-2xl mx-auto p-6">
-            <!-- AI Response Container -->
-            <div class="bg-gray-100 p-6 rounded-2xl shadow-lg relative">
-                <!-- AI Icon -->
-                <div class="flex items-center space-x-3">
-                    <div class="bg-blue-500 text-white p-2 rounded-full">
-                        <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c1.5 0 3 .5 3 1.5S13.5 14 12 14s-3-.5-3-1.5S10.5 11 12 11zm-1 4h2m-1 1v2m-5-9h10M4 4h16M4 20h16"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-lg font-semibold text-gray-800">AI Assistant</h3>
-                </div>
-        
-                <!-- AI Text Output -->
-                <p id="ai-text" class="mt-4 text-gray-700 text-lg leading-relaxed">
-                    {{ events }}
-                </p>
+    <div name="featuresContent" class="w-[80%] flex flex-col justify-center items-center mx-auto mt-[5%]">
+    
+        <!-- Sekcja 1 -->
+        <div name="s2" class="w-[80%] flex flex-row items-center justify-between p-5 mx-auto rounded-xl mt-8 shadow-lg">
+            <div name="s2-left" class="w-1/2">
+                <p class="text-[32px] font-semibold">Smart Place Search</p>
+                <p>Easily explore the best spots in your city with personalized suggestions.</p>
+                <a href="#" class="border-2 border-[#09151B] p-4 shadow-md block" 
+                   style="border-radius: 30px; padding: 12px 24px; margin-top: 40px;">
+                   See more
+                </a>
+            </div>            
+            <div name="s2-right" class="w-1/2 flex justify-center">
+                <img src="{% static 'img/car.png' %}" alt="feature1" class="max-w-full h-auto">
             </div>
         </div>
     
-    </div> 
-    {% endif %}
+        <!-- Sekcja 2 -->
+        <div name="s2" class="w-[80%] flex flex-row-reverse items-center justify-between p-5 mx-auto rounded-xl mt-[5%] shadow-lg">
+            <div name="s2-left" class="w-1/2">
+                <p class="text-[32px] font-semibold">Navigation & Route Planning</p>
+                <p>Navigate your city efficiently with accurate and convenient directions.</p>
+                <a href="#" class="border-2 border-[#09151B] p-4 shadow-md block" 
+                   style="border-radius: 30px; padding: 12px 24px; margin-top: 40px;">
+                   See more
+                </a>
+            </div>            
+            <div name="s2-right" class="w-1/2 flex justify-center">
+                <img src="{% static 'img/pinpoint.png' %}" alt="feature1" class="max-w-full h-auto">
+            </div>
+        </div>
+    
+        <!-- Sekcja 3 -->
+        <div name="s2" class="w-[80%] flex flex-row items-center justify-between p-5 mx-auto rounded-xl mt-[5%] shadow-lg">
+            <div name="s2-left" class="w-1/2">
+                <p class="text-[32px] font-semibold">Find Local Events & Activities</p>
+                <p>Never miss out on exciting events and activities in your area.</p>
+                <a href="#" class="border-2 border-[#09151B] p-4 shadow-md block" 
+                   style="border-radius: 30px; padding: 12px 24px; margin-top: 40px;">
+                   See more
+                </a>
+            </div>            
+            <div name="s2-right" class="flex justify-center w-[40%]">
+                <img src="{% static 'img/stage.png' %}" alt="feature1" class="w-[60%] max-w-[200px] h-auto" style="max-width: 400px;">
+            </div>
+        </div>
+    
+        <!-- Sekcja 4 -->
+        <div name="s2" class="w-[80%] flex flex-row items-center justify-between p-5 mx-auto rounded-xl mt-[5%] shadow-lg">
+            <div name="s2-left" class="w-1/2">
+                <p class="text-[32px] font-semibold">Community Reviews & Recommendations</p>
+                <p>Make informed decisions with insights from a trusted community.</p>
+                <a href="#" class="border-2 border-[#09151B] p-4 shadow-md block" 
+                   style="border-radius: 30px; padding: 12px 24px; margin-top: 40px;">
+                   See more
+                </a>
+            </div>            
+            <div name="s2-right" class="flex justify-center w-[40%]">
+                <img src="{% static 'img/globe.png' %}" alt="feature1" class="w-[60%] max-w-[200px] h-auto" style="max-width: 400px;">
+            </div>
+        </div>
+    
+        <!-- Sekcja 5 -->
+        <div name="s2" class="w-[80%] flex flex-row items-center justify-between p-5 mx-auto rounded-xl mt-[5%] shadow-lg">
+            <div name="s2-left" class="w-1/2">
+                <p class="text-[32px] font-semibold">Augmented Reality (AR) & QR Code Scanning</p>
+                <p> Enhance your city experience with immersive digital features.</p>
+                <a href="#" class="border-2 border-[#09151B] p-4 shadow-md block" 
+                   style="border-radius: 30px; padding: 12px 24px; margin-top: 40px;">
+                   See more
+                </a>
+            </div>            
+            <div name="s2-right" class="flex justify-center w-[40%]">
+                <img src="{% static 'img/qr.png' %}" alt="feature1" class="w-[60%] max-w-[200px] h-auto" style="max-width: 400px;">
+            </div>
+        </div>
+    
+        <!-- Sekcja 6 -->
+        <div name="s2" class="w-[80%] flex flex-row items-center justify-between p-5 mx-auto rounded-xl mt-[5%] shadow-lg">
+            <div name="s2-left" class="w-1/2">
+                <p class="text-[32px] font-semibold">Offline Mode</p>
+                <p> Stay connected to your city even when you're offline.</p>
+                <a href="#" class="border-2 border-[#09151B] p-4 shadow-md block" 
+                   style="border-radius: 30px; padding: 12px 24px; margin-top: 40px;">
+                   See more
+                </a>
+            </div>            
+            <div name="s2-right" class="flex justify-center w-[40%]">
+                <img src="{% static 'img/noWiFi.png' %}" alt="feature1" class="w-[60%] max-w-[200px] h-auto" style="max-width: 400px;">
+            </div>
+        </div>
+    </div>
+    <div name="about" class="flex w-full justify-center">
+        <div name="about-content" class="m-10 mt-[10%] flex flex-col">
+            <div>
+                <p name="sectionName"  class="border-2 border-black rounded-lg p-2 text-center">User ratings</p>
+                <p class="text-[64px]" name="sectionDesc">What people think about us</p>
+            </div>
+        </div>
+    </div>
+    <div name="userReviews" class="w-[80%] flex flex-col items-center justify-center p-10 mx-auto rounded-xl mt-[5%] shadow-lg bg-gradient-to-r from-blue-500 to-indigo-500 text-white">
+        <div class="w-full flex flex-wrap justify-center gap-6 mt-8">
+            <div class="w-[30%] p-6 bg-white rounded-xl shadow-lg text-black flex flex-col items-center text-center">
+                <img src="{% static 'img/p1.png' %}" alt="User 1"style="width: 64px; height: 64px;" class="w-16 h-16 rounded-full mb-4">
+                <p class="text-lg font-medium">"This app changed the way I explore my city! Highly recommended."</p>
+                <p class="mt-3 font-semibold">- Alex J.</p>
+            </div>
+            <div class="w-[30%] p-6 bg-white rounded-xl shadow-lg text-black flex flex-col items-center text-center">
+                <img src="{% static 'img/p2.png' %}" alt="User 2" style="width: 64px; height: 64px;" class="w-16 h-16 rounded-full mb-4">
+                <p class="text-lg font-medium">"Super accurate navigation and great recommendations!"</p>
+                <p class="mt-3 font-semibold">- Maria S.</p>
+            </div>
+            <div class="w-[30%] p-6 bg-white rounded-xl shadow-lg text-black flex flex-col items-center text-center">
+                <img src="{% static 'img/p3.png' %}" alt="User 3"style="width: 64px; height: 64px;" class="w-16 h-16 rounded-full mb-4">
+                <p class="text-lg font-medium">"I love the community insights! Helps me find hidden gems."</p>
+                <p class="mt-3 font-semibold">- James T.</p>
+            </div>
+        </div>
+    </div>
+    <div name="cta" class="w-full flex flex-col items-center justify-center mt-[10%] text-center">
+        <p class="font-semibold text-[64px]">What are you waiting for?</p>
+        <a href="#" class="border-2 border-[#09151B] p-6 shadow-md text-[24px] font-semibold mt-6" 
+           style="border-radius: 30px; padding: 16px 32px;">
+           Start now
+        </a>
+    </div>
+    
+  {% else %}
+      <div class="events">
+          <div class="max-w-2xl mx-auto p-6">
+              <!-- AI Response Container -->
+              <div class="bg-gray-100 p-6 rounded-2xl shadow-lg relative">
+                  <!-- AI Icon -->
+                  <div class="flex items-center space-x-3">
+                      <div class="bg-blue-500 text-white p-2 rounded-full">
+                          <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c1.5 0 3 .5 3 1.5S13.5 14 12 14s-3-.5-3-1.5S10.5 11 12 11zm-1 4h2m-1 1v2m-5-9h10M4 4h16M4 20h16"/>
+                          </svg>
+                      </div>
+                      <h3 class="text-lg font-semibold text-gray-800">AI Assistant</h3>
+                  </div>
+
+                  <!-- AI Text Output -->
+                  <p id="ai-text" class="mt-4 text-gray-700 text-lg leading-relaxed">
+                      {{ events }}
+                  </p>
+              </div>
+          </div>
+
+      </div> 
+     {% endif %}
     
 {% endblock %}
