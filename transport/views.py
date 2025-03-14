@@ -56,6 +56,7 @@ def transport(request, pk):
     transport = Transport.objects.get(pk=pk)
     locations = TransportThroughLocation.objects.filter(transport=transport)
 
+    #ADD REQUEST
     if request.method == 'POST':
         message = request.POST.get('message')
         user = Profile.objects.get(user=request.user)
@@ -88,4 +89,7 @@ def accept_request(request, pk):
     transport_request = TransportRequest.objects.get(pk=pk)
     transport_request.accepted = True
     transport_request.save()
+
+    transport = transport_request.transport
+    transport.passengers.add(transport_request.user)
     return redirect('requests')
