@@ -1,18 +1,51 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    Event: {{event.title}} <br>
+    <!-- Event: {{event.title}} <br>
     Category: {{event.category.name}} <br>
     Date: {{event.date}} <br>
     Description: {{event.description}} <br>
-    Location: {{event.location}} <br>
+    Location: {{event.location}} <br> -->
     <img src="{{event.imageURL}}" alt="">
 
-    
+    <div class="mb-4">
+        <label for="title" class="block text-gray-700 font-medium">Event Title</label>
+        <!-- <input type="text" id="title" name="title" class="w-full mt-2 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter event title"> -->
+        <div type="date" id="title" name="title" class="w-full mt-2 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">{{event.title}}</div>
+    </div>
 
-    
-    
-    
-    
+    <!-- Description Field -->
+    <div class="mb-4">
+        <label for="desc" class="block text-gray-700 font-medium">Description</label>
+        <!-- <textarea id="desc" name="desc" rows="4" class="w-full mt-2 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Describe the event"></textarea> -->
+        <div type="date" id="desc" name="desc" rows="4" class="w-full mt-2 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Describe the event">{{event.description}} </div>
+    </div>
+
+    <!-- Category Field -->
+    <div class="mb-4">
+        <label for="category" class="block text-gray-700 font-medium">Category</label>
+        <!-- <select id="category" name="category" class="w-full mt-2 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <option value="">Select Category</option>
+            <option value="conference">Conference</option>
+            <option value="workshop">Workshop</option>
+            <option value="seminar">Seminar</option>
+            <option value="webinar">Webinar</option>
+        </select> -->
+        <div type="date" id="category" name="category" class="w-full mt-2 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">{{event.category}} </div>
+    </div>
+
+    <!-- Date Field -->
+    <div class="mb-4">
+        <label for="date" class="block text-gray-700 font-medium">Event Date</label>
+        <!-- <input type="date" id="date" name="date" class="w-full mt-2 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"> -->
+        <div type="date" id="date" name="date" class="w-full mt-2 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">{{event.date}}</div>
+    </div>
+
+    <!-- Location Field -->
+    <div class="mb-6">
+        <label for="location" class="block text-gray-700 font-medium">Event Location</label>
+        <!-- <input type="text" id="location" name="location" class="w-full mt-2 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter event location"> -->
+        <div type="date" id="location" name="location" class="w-full mt-2 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter event location">{{event.location}}</div>
+    </div>    
 
 {% endblock %}

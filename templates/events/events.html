@@ -3,11 +3,11 @@
 {% load widget_tweaks %}
 
 {% block content %}
-    Events <br>
 
-    <form method="GET">
-        <input type="text" name="search" placeholder="search">
-        <button type="submit">search</button>
+    <form method="GET" class="p-6">
+        Events <br>
+        <input type="text" name="search" placeholder="search" class="border border-gray-300 rounded-lg p-2">
+        <button type="submit" class="border border-gray-300 rounded-lg p-2">search</button>
     </form>
 
     <br>
@@ -19,8 +19,33 @@
         <input type="submit" value="Dodaj">
     </form> -->
 
+    <div class="overflow-x-auto shadow-lg rounded-lg">
+        <table class="min-w-full bg-white border border-gray-300 table-auto">
+            <thead class="bg-gray-200">
+                <tr>
+                    <th class="px-6 py-3 text-left text-sm font-semibold text-gray-700 uppercase">Nazwa</th>
+                    <th class="px-6 py-3 text-left text-sm font-semibold text-gray-700 uppercase">Miejsce</th>
+                    <th class="px-6 py-3 text-left text-sm font-semibold text-gray-700 uppercase">Data</th>
+                    <th class="px-6 py-3 text-left text-sm font-semibold text-gray-700 uppercase">Kategoria</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+
+                {% for event in events %}
+                    <tr class="border-b hover:bg-gray-50" onclick='window.location="{{event.pk}}/"'>
+                        <td class="px-6 py-4 text-sm text-gray-800">{{event.title}}</td>
+                        <td class="px-6 py-4 text-sm text-gray-800">{{event.location}}</td>
+                        <td class="px-6 py-4 text-sm text-gray-800">{{event.date|date:"d.m.Y"}}</td>
+                        <td class="px-6 py-4 text-sm text-gray-800">{{event.category}}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
     <div class="max-w-2xl mx-auto p-6 bg-white rounded-lg shadow-lg">
-        <h2 class="text-2xl font-semibold text-gray-800 mb-6">Create Event</h2>
+        <h1 class="text-2xxl font-semibold text-gray-800 mb-6" style="font-size: 30px;">Create Event</h1>
         
         <form method="POST">
             {% csrf_token %}
@@ -87,30 +112,6 @@
     {% endfor %}
     {% endcomment %} -->
 
-    <div class="overflow-x-auto shadow-lg rounded-lg">
-        <table class="min-w-full bg-white border border-gray-300 table-auto shadow-md rounded-lg">
-            <thead class="bg-blue-500 text-white">
-                <tr>
-                    <th class="px-6 py-4 text-left text-sm font-semibold uppercase">Nazwa</th>
-                    <th class="px-6 py-4 text-left text-sm font-semibold uppercase">Miejsce</th>
-                    <th class="px-6 py-4 text-left text-sm font-semibold uppercase">Data</th>
-                    <th class="px-6 py-4 text-left text-sm font-semibold uppercase">Kategoria</th>
-                </tr>
-            </thead>
-            <tbody class="text-gray-700">
-                {% for event in events %}
-                    <tr class="border-b hover:bg-gray-200 even:bg-gray-100 transition duration-200" onclick='window.location="{{event.pk}}/"'>
-                        <td class="px-6 py-4 text-sm">{{event.title}}</td>
-                        <td class="px-6 py-4 text-sm">{{event.location}}</td>
-                        <td class="px-6 py-4 text-sm">{{event.date|date:"d.m.Y"}}</td>
-                        <td class="px-6 py-4 text-sm">{{event.category}}</td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
     
-
-
 
 {% endblock %}
