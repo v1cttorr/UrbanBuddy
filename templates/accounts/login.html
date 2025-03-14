@@ -11,15 +11,53 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-
+<!--<h1>Log in</h1>
      <form method="post" class="form-group">
         {% csrf_token %}
         {% render_field form.username  placeholder="Login" class="login_label"  id="" %}
         {% render_field form.password  placeholder="Password" class="login_password"  id="" %}
         <p>
-            Don't have an account? Create it  <a href="/register/">here</a>
+            Nie posiadasz konta? Załóż je <a href="/register/">tutaj</a>
         </p>
-        <button type="submit" class="btn btn-primary" style="position: relative; left: 47.3%;">Log in</button>
-
-    </form>
+        <button type="submit" class="btn btn-primary" style="position: relative; left: 47.3%;">Zaloguj</button>
+    </form> -->
+    <div name="topNav" class="flex flex-row justify-between w-full">
+        <div name="topNav-content" class="flex flex-row justify-between m-6 w-full">
+            <div name="logo" class="flex flex-row gap-2 items-center">
+                <p class="font-semibold font-Poppins tracking-widest drop-shadow-md">UrbanBuddy</p>
+            </div>
+            <div name="loginAndSignUp" class="flex flex-row items-center gap-5 mr-6">
+                <div class="flex flex-row items-center">
+                    <a name="login" href="#" class="border-2 border-[#09151B] p-4 shadow-md" style="border-radius: 30px; padding-right: 24px;padding-left: 24px;">Login</a>
+                    <a name="register" href="#" class="border-2 border-[#09151B] p-4  text-white bg-[#09151B] shadow-md" style="border-radius: 30px; padding-right: 24px;padding-left: 24px;margin-left:10px">Register</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div name="login-container" class="flex w-full justify-center mt-20">
+        <div name="login-content" class="flex flex-col items-center justify-center  border-2 border-[#CED7DC] w-[30%] rounded-2xl shadow-[3px_3px_0px_#CAD1D6,3px_3px_30px_rgba(0,0,0,0.3)]">
+            <div name="login-text" class="mt-10">
+                <p class="text-[32px] font-semibold text-[#09151B]">UrbanBuddy</p>
+            </div>
+            <div name="login-form" class="flex flex-col w-[80%] items-center mt-8">
+                <form method="post" class="w-full flex flex-col items-center justify-center">
+                    {% csrf_token %}
+                    <div class="flex flex-col gap-5 w-full items-center">
+                        {% render_field form.username placeholder="Login" class="w-[80%] outline-none px-4 py-3 border-b-2 border-t-0 border-l-0 border-r-0 focus:outline-none focus:ring-2 focus:ring-black text-gray-700 placeholder-gray-500" %}
+                        {% render_field form.password placeholder="Password" class="w-[80%] outline-none px-4 py-3 border-b-2 border-t-0 border-l-0 border-r-0 focus:outline-none focus:ring-2 focus:ring-black text-gray-700 placeholder-gray-500" %}
+                    </div>
+                    <div name="login-button" class="w-full flex justify-center mt-6">
+                        <button type="submit" class="border-2 border-[#09151B] p-4 shadow-md" style="border-radius: 30px; padding-right: 24px;padding-left: 24px;">
+                            Log in
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <div name="fPassword" class="w-full flex justify-center mt-4 p-5">
+                <a href="/password_reset/" class="text-sm text-grey-500 hover:underline" style="padding: 10px;padding-bottom: 20px;">Forgot password?</a>
+                <a href="/password_reset/" class="text-sm text-grey-500 hover:underline" style="padding: 10px;padding-bottom: 20px;">You don't have account?</a>
+            </div>       
+        </div>
+    </div>
+    
 {% endblock %}

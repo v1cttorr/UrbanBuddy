@@ -8,13 +8,45 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-    <div class="container">
-        <h1>Register</h1>
-        <form method="post" class="form-group">
-            {% csrf_token %}
-            {% crispy form %}
-            <button type="submit" class="btn btn-primary">Register</button>
-        </form>
+<div name="topNav" class="flex flex-row justify-between w-full">
+    <div name="topNav-content" class="flex flex-row justify-between m-6 w-full">
+        <div name="logo" class="flex flex-row gap-2 items-center">
+            <p class="font-semibold font-Poppins tracking-widest drop-shadow-md">UrbanBuddy</p>
+        </div>
+        <div name="loginAndSignUp" class="flex flex-row items-center gap-5 mr-6">
+            <div class="flex flex-row items-center">
+                <a name="login" href="#" class="border-2 border-[#09151B] p-4 shadow-md" style="border-radius: 30px; padding-right: 24px;padding-left: 24px;">Login</a>
+                <a name="register" href="#" class="border-2 border-[#09151B] p-4  text-white bg-[#09151B] shadow-md" style="border-radius: 30px; padding-right: 24px;padding-left: 24px;margin-left:10px">Register</a>
+            </div>
+        </div>
     </div>
+</div>
+<div name="register-container" class="flex w-full justify-center mt-20">
+    <div name="register-content" class="flex flex-col items-center justify-center bg-white border-2 border-[#CED7DC] w-[30%] rounded-2xl shadow-[3px_3px_0px_#CAD1D6,3px_3px_30px_rgba(0,0,0,0.3)] px-6 py-10">
+        <p class="text-[32px] font-semibold text-[#09151B] mb-6">UrbanBuddy</p>
+        <form method="post" class="w-full flex flex-col items-center gap-6">
+            {% csrf_token %}
+            {% render_field form.firstname placeholder="First Name" class="w-[80%] px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-[#09151B] focus:outline-none placeholder-gray-500" %}
+            {% render_field form.lastname placeholder="Last Name" class="w-[80%] px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-[#09151B] focus:outline-none placeholder-gray-500" %}
+            {% render_field form.username placeholder="Username" class="w-[80%] px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-[#09151B] focus:outline-none placeholder-gray-500" %}
+            {% render_field form.email placeholder="Email" class="w-[80%] px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-[#09151B] focus:outline-none placeholder-gray-500" %}
+            {% render_field form.age placeholder="Age" class="w-[80%] px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-[#09151B] focus:outline-none placeholder-gray-500" %}
+            {% render_field form.password1 placeholder="Password" class="w-[80%] px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-[#09151B] focus:outline-none placeholder-gray-500" %}
+            {% render_field form.password2 placeholder="Confirm Password" class="w-[80%] px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-[#09151B] focus:outline-none placeholder-gray-500" %}
+            
+            <div class="w-full flex justify-center mt-4">
+                <button type="submit" class="border-2 border-[#09151B] p-4 shadow-md" style="border-radius: 30px; padding-right: 24px;padding-left: 24px;">
+                    Register
+                </button>
+            </div>
+        </form>
+        <div name="fPassword" class="w-full flex justify-center mt-4 p-5">
+            <a href="/password_reset/" class="text-sm text-grey-500 hover:underline" style="padding: 10px;">Forgot password?</a>
+            <a href="/password_reset/" class="text-sm text-grey-500 hover:underline" style="padding: 10px;">Already have account?</a>
+        </div>
+    </div>
+</div>
+
+
     
 {% endblock %}

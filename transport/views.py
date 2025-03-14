@@ -21,7 +21,6 @@ def transports(request):
             instance.save()
             
             locations = request.POST.getlist('locations')
-            print(locations)
 
             for location in locations:
                 transport_through_location = TransportThroughLocation.objects.create(
@@ -30,6 +29,25 @@ def transports(request):
                 )
                 transport_through_location.save()
             return redirect('transports')
+        
+    if request.method == 'GET':
+        from_location = request.GET.get('from_location', "")
+        destination = request.GET.get('destination', "")
+        locations_search = request.GET.getlist('locations_search', "")
+        
+        transports = Transport.objects.filter(
+                                                from_location__icontains=from_location,
+                                                to_location__icontains=destination,
+                                                transportthroughlocation__location__in=locations_search
+                                              )
+        print(from_location, destination, locations_search)
+
+        context = {
+            'transports': transports,
+            'form': form,
+        }
+        return render(request, 'transport/transports.html', context)
+
 
     context = {
         'transports': transports,
@@ -41,6 +59,7 @@ def transport(request, pk):
     transport = Transport.objects.get(pk=pk)
     locations = TransportThroughLocation.objects.filter(transport=transport)
 
+    #ADD REQUEST
     if request.method == 'POST':
         message = request.POST.get('message')
         user = Profile.objects.get(user=request.user)
@@ -79,8 +98,10 @@ def accept_request(request, pk):
     transport_request = TransportRequest.objects.get(pk=pk)
     transport_request.accepted = True
     transport_request.save()
-    return redirect('requests')
 
+    transport = transport_request.transport
+    transport.passengers.add(transport_request.user)
+    return redirect('requests')
 
 @login_required
 def add_alert(request):
