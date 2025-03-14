@@ -17,4 +17,17 @@
     <!-- LOKALIZACJA -->
     <!-- LOKALIZACJA -->
     <!-- DODAJ -->
+     
+
+    <button id="add_location" onclick=add_location()> add location</button>
+    <div id="locations"></div>
+<script>
+    button_add_location = document.getElementById("add_location");
+    function add_location(){
+        let input_add_location = document.createElement("input");
+        input_add_location.placeholder = "add location";
+        let locations = document.getElementById("locations");
+        locations.appendChild(input_add_location);
+    }
+</script>
 {% endblock %}
