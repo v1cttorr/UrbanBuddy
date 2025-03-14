@@ -5,8 +5,16 @@
 
     Linki: <br>
     {% for transport in transports %}
-        <a href="drive/{{transport.id}}/">{{transport.from_location}} - {{transport.to_location}}</a> <br>
+        <a href="drive/{{transport.id}}/">{{transport.from_location}} - {{transport.to_location}}: {{transport.time|date:"d.m.Y"}}</a>
+            przez: 
+            {% for location in transport.get_transport_through %}
+                {{location}} - 
+            {% endfor %}
+        </a>
+        <br>
     {% endfor %}
+
+
 
     <br> <br>
     <h1>Dodaj transport</h1>
