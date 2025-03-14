@@ -33,20 +33,11 @@ def transports(request):
     if request.method == 'GET':
         from_location = request.GET.get('from_location', "")
         destination = request.GET.get('destination', "")
-        locations_search = request.GET.getlist('locations_search', "")
-        
-        if locations_search:
-            transports = Transport.objects.filter(
-                                                from_location__icontains=from_location,
-                                                to_location__icontains=destination,
-                                                transportthroughlocation__location__in=locations_search
-                                              )
-        else:
-            transports = Transport.objects.filter(
+            
+        transports = Transport.objects.filter(
                                                 from_location__icontains=from_location,
                                                 to_location__icontains=destination
                                               )
-        print(from_location, destination, locations_search)
 
         context = {
             'transports': transports,
