@@ -1,0 +1,25 @@
+
+{% extends "base.html" %}
+
+{% load widget_tweaks %}
+{% load static %}
+
+{% block title %}
+    
+{% endblock %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+     <form method="post" class="form-group">
+        {% csrf_token %}
+        {% render_field form.username  placeholder="Login" class="login_label"  id="" %}
+        {% render_field form.password  placeholder="Password" class="login_password"  id="" %}
+        <p>
+            Don't have an account? Create it  <a href="/register/">here</a>
+        </p>
+        <button type="submit" class="btn btn-primary" style="position: relative; left: 47.3%;">Log in</button>
+
+    </form>
+{% endblock %}
