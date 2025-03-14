@@ -29,6 +29,9 @@ urlpatterns = [
     # transport related
     path('transport/', include('transport.urls')),
     
+    # gpt related
+    path('gpt/', include('gpt.urls')),
+    
     # user related
     path('register/', accounts_views.register, name="register"),
     path('profile/', accounts_views.profile, name="profile"),

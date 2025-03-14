@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+from decouple import config
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -42,8 +43,9 @@ INSTALLED_APPS = [
     # local apps
     'accounts.apps.AccountsConfig',
     'events.apps.EventsConfig',
+    'gpt.apps.GptConfig',
     'transport.apps.TransportConfig',
-    
+
     # installed apps
     "crispy_forms",
     'crispy_bootstrap5',
@@ -156,3 +158,10 @@ INTERNAL_IPS = [
     "127.0.0.1",
 ]
 NPM_BIN_PATH = "C:/Program Files/nodejs/npm.cmd"
+
+# API key
+API_KEY = config('API_KEY', default=None)
+if not API_KEY:
+    raise ValueError("API key not found. Make sure it's set in the .env file.")
+if not API_KEY:
+    raise ValueError("API key not found. Please check your .env file.")

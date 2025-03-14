@@ -1,0 +1,27 @@
+from django.shortcuts import render
+from django.conf import settings
+from django.utils.safestring import mark_safe
+import google.generativeai as genai
+from django.contrib.auth.decorators import login_required
+from accounts.models import Profile
+from django.contrib.auth.models import User
+
+# Create your views here.
+@login_required
+def interests_ideas(request):
+    api_key = settings.API_KEY
+    
+    if not api_key:
+        raise ValueError("API_KEY not set")
+    
+    genai.configure(api_key=api_key)
+
+    model = genai.GenerativeModel("gemini-2.0-flash")
+
+    user_interests = Profile.objects.get(user=request.user).interests
+
+    response = model.generate_content(f'I\'m interested in this things  {user_interests} give me 3 ideas what I can do with it (points only) (if not specified generate random ideas)')
+    
+    formatted_response = mark_safe(response.text.replace("*", " "))
+
+    return formatted_response
