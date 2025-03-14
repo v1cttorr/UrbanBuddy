@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: black;
+        }
+        nav{
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            height: 50px;
+            justify-content: center;
+        }
+        a{
+            position: relative;
+            cursor: pointer;
+            color: white;
+            font-size: 28px;
+            padding: 0.5rem 1rem;
+            transition: color 0.25s;
+        }
+        a::after{
+            position: absolute;
+            content: "";
+            inset: 0;
+            background:rgb(60, 60, 60);
+            scale: 1 0;
+            z-index: -1;
+            transition: 0.45s;
+            border-radius: 10px;
+        }
+        a:hover::after{
+            scale: 1 1;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="">OPCJA1</a>
+        <a href="">OPCJA2</a>
+        <a href="">OPCJA3</a>
+        <a href="">OPCJA4</a>
+        <a href="">OPCJA5</a>
+    </nav>
+<script>
+    
+</script>
+</body>
+</html>

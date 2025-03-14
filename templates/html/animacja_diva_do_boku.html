@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: space-between;
+            margin: 0;
+            padding: 0;
+        }
+
+        .div_animacja, .div_animacja2 {
+            width: 35%;
+            height: 600px;
+            background-color: black;
+            display: inline-block;
+        }
+
+        .div_animacja {
+            animation: testAnimationA 3s alternate both ;
+        }
+
+        .div_animacja2 {
+            animation: testAnimationB 3s  alternate both;
+        }
+
+        @keyframes testAnimationA {
+            0% {
+                transform: translateX(0); /* Zaczyna od lewej krawędzi */
+            }
+            100% {
+                transform: translateX(100px); /* Przesuwa się w prawo */
+            }
+        }
+
+        @keyframes testAnimationB {
+            0% {
+                transform: translateX(0); /* Zaczyna od prawej krawędzi */
+            }
+            100% {
+                transform: translateX(-100px); /* Przesuwa się w lewo */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="div_animacja" class="div_animacja">Zawartość diva 1</div>
+    <div id="div_animacja2" class="div_animacja2">Zawartość diva 2</div>
+</body>
+</html>
