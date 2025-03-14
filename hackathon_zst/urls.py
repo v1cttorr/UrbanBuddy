@@ -20,6 +20,9 @@ import accounts.views as accounts_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+
+    # event related
+    path('', include('events.urls')),
     
     # user related
     path('register/', accounts_views.register, name="register"),
@@ -30,4 +33,7 @@ urlpatterns = [
     path('accounts/profile/', accounts_views.home, name="home"),
     path('set-avatar/', accounts_views.setAvatar, name="setAvatar"),
     path('', include('django.contrib.auth.urls')), 
+
+    # tailwind
+    path("__reload__/", include("django_browser_reload.urls")),
 ]
