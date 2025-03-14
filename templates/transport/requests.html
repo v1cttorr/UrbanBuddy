@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    {% for request in transport_requests %}
+        {{request}} 
+        {% if not request.accepted %}
+            <a href="accept-request/{{request.pk}}/"><button style="background-color: green;">Accept</button></a>
+        {% endif %}
+        <br>
+    {% endfor %}
+
+{% endblock %}

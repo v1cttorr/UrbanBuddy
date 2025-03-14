@@ -6,4 +6,12 @@
     {% for location in locations %}
         {{location}}
     {% endfor %}
+
+    <br> <br>
+    <form method="POST">
+        {% csrf_token %}
+        Message (optional):
+        <textarea name="message" id="message"></textarea>
+        <button type="submit" style="background-color: blueviolet;">Popros o przejazd</button>
+    </form>
 {% endblock %}
