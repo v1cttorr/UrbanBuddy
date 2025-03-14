@@ -2,12 +2,35 @@
 
 {% block content %}
 
-    {% for request in transport_requests %}
-        {{request}} 
-        {% if not request.accepted %}
-            <a href="accept-request/{{request.pk}}/"><button style="background-color: green;">Accept</button></a>
-        {% endif %}
-        <br>
-    {% endfor %}
+    <div class="overflow-x-auto shadow-lg rounded-lg">
+        <table class="min-w-full bg-white border border-gray-300 table-auto">
+            <thead class="bg-gray-200">
+                <tr>
+                    <th class="px-6 py-3 text-left text-sm font-semibold text-gray-700 uppercase">Prośba od</th>
+                    <th class="px-6 py-3 text-left text-sm font-semibold text-gray-700 uppercase">Z</th>
+                    <th class="px-6 py-3 text-left text-sm font-semibold text-gray-700 uppercase">Do</th>
+                    <th class="px-6 py-3 text-left text-sm font-semibold text-gray-700 uppercase">Data</th>
+                    <th class="px-6 py-3 text-left text-sm font-semibold text-gray-700 uppercase"></th>
+                </tr>
+            </thead>
+            <tbody>
+                
+
+                {% for request in transport_requests %}
+                    <tr class="border-b hover:bg-gray-50" onclick='window.location="accept-request/{{request.pk}}/"'>
+                        <td class="px-6 py-4 text-sm text-gray-800">{{request.user}}</td>
+                        <td class="px-6 py-4 text-sm text-gray-800">{{request.transport.from_location}}</td>
+                        <td class="px-6 py-4 text-sm text-gray-800">{{request.transport.to_location}}</td>
+                        <td class="px-6 py-4 text-sm text-gray-800">{{request.created_at|date:"d.m.Y"}}</td>
+                        <td class="px-6 py-4 text-sm text-gray-800">
+                            {% if not request.accepted %}
+                                <a href="accept-request/{{request.pk}}/"><button style="background-color: green;">Accept</button></a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 
 {% endblock %}
