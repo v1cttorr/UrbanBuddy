@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .div_dodajacy {
+            margin-top: 10px;
+            padding: 10px;
+            border: 1px solid black;
+            width: 300px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <button id="zglos" class="zglos">zglos utrudnienie</button>
+    <ul id="lista">
+
+    </ul>
+    
+    <div id="div_do_dodawania"></div>
+<script>
+    let button_dodaj_zgloszenie = document.getElementById("zglos");
+    button_dodaj_zgloszenie.addEventListener("click", function () {
+        let div_do_dodawania = document.getElementById("div_do_dodawania");
+    
+        let div_dodajacy = document.createElement("div");
+        div_dodajacy.className = "div_dodajacy";
+    
+        let input_tytul_zgloszenia = document.createElement("input");
+        input_tytul_zgloszenia.type = "text";
+        input_tytul_zgloszenia.placeholder = "tytul zdarzenia";
+    
+        let opis_problemu = document.createElement("textarea");
+        opis_problemu.placeholder = "opisz problem";
+    
+        let button_dodaj = document.createElement("button");
+        button_dodaj.textContent = "dodaj";
+    
+        // Poprawiony event - działa od razu!
+        button_dodaj.addEventListener("click", function () {
+            let lista = document.getElementById("lista");
+            let tytul_zgloszenia = input_tytul_zgloszenia.value;
+            let opis = opis_problemu.value;
+    
+            if (tytul_zgloszenia.trim() === "" || opis.trim() === "") {
+                alert("Wypełnij oba pola!");
+                return;
+            }
+    
+            let li = document.createElement("li");
+            li.textContent = `${tytul_zgloszenia} - ${opis}`;
+    
+            lista.appendChild(li);
+    
+            // Resetowanie wartości pól po dodaniu
+            input_tytul_zgloszenia.value = "";
+            opis_problemu.value = "";
+        });
+    
+        div_dodajacy.appendChild(input_tytul_zgloszenia);
+        div_dodajacy.appendChild(opis_problemu);
+        div_dodajacy.appendChild(button_dodaj);
+        div_do_dodawania.appendChild(div_dodajacy);
+    });
+    
+</script>
+</body>
+</html>

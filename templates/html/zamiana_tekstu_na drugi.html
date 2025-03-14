@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .tekst{
+            width: 100px;
+        }
+        .tekst1{
+            opacity: 1;
+            animation: fadeInOut 4s ease-in-out;
+        }
+        @keyframes fadeInOut {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <p class="tekst">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam dolor explicabo molestiae unde? Voluptas tempora illo itaque vel reprehenderit perspiciatis ullam modi dolore? Incidunt voluptatum laudantium ullam. Esse libero culpa pariatur similique suscipit recusandae quidem odit iusto molestiae laudantium quia quos repudiandae voluptas asperiores deserunt quaerat quis, distinctio minima, exercitationem consequuntur. Unde debitis iusto architecto perferendis ut quas adipisci, libero repellat ipsam saepe nisi fugit molestiae, dolorem eum error eius eveniet labore dolorum. Quas non quo dolore aspernatur eligendi! Laboriosam nihil nulla voluptatum earum sunt reprehenderit. Dicta quidem ut fugit voluptas omnis, commodi recusandae excepturi eum magni aperiam quisquam eligendi ullam. Odit cum ea dignissimos nihil quisquam sapiente exercitationem minus, in beatae eum voluptas laborum qui, veniam enim officia libero nostrum maxime optio, hic atque reiciendis delectus quod. Sunt magnam cum officiis? Similique hic ullam provident, repellendus et sit? Error minus culpa exercitationem iusto consequuntur nesciunt recusandae cupiditate veritatis. Minima optio repellat dicta hic eligendi quam, placeat saepe architecto ullam tenetur sunt voluptatem ab incidunt? Praesentium maiores, molestiae adipisci placeat deserunt vel harum recusandae cum nesciunt, perspiciatis totam eius sit quo quod, nemo rem aliquam quibusdam? Sapiente esse magni, atque placeat, totam officia optio incidunt vitae voluptatem perferendis, in vero!</p>
+    <h1 id="tekst1" class="tekst1">tekst1</h1>
+
+<script>
+    function change(){
+        let tekst_do_zmiany = document.getElementById("tekst1");
+
+        // Remove the animation class temporarily to reset animation
+        tekst_do_zmiany.classList.remove("tekst1");
+
+        setTimeout(function(){
+            tekst_do_zmiany.innerHTML = "nowy tekst ";
+            tekst_do_zmiany.classList.add("tekst1"); // Reapply animation class
+        }, 3000);
+    }
+
+    function checkIfVisible() {
+        let tekst_do_zmiany = document.getElementById("tekst1");
+        let rect = tekst_do_zmiany.getBoundingClientRect();
+        
+        if (rect.top >= 0 && rect.bottom <= window.innerHeight) {
+            change(); // If visible, trigger text change and animation
+            window.removeEventListener("scroll", checkIfVisible); // Remove listener after the action is performed
+        }
+    }
+
+    // Listen for scroll events to check if the text is visible
+    window.addEventListener("scroll", checkIfVisible);
+</script>
+</body>
+</html>

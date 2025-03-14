@@ -88,28 +88,29 @@
     {% endcomment %} -->
 
     <div class="overflow-x-auto shadow-lg rounded-lg">
-        <table class="min-w-full bg-white border border-gray-300 table-auto">
-            <thead class="bg-gray-200">
+        <table class="min-w-full bg-white border border-gray-300 table-auto shadow-md rounded-lg">
+            <thead class="bg-blue-500 text-white">
                 <tr>
-                    <th class="px-6 py-3 text-left text-sm font-semibold text-gray-700 uppercase">Nazwa</th>
-                    <th class="px-6 py-3 text-left text-sm font-semibold text-gray-700 uppercase">Miejsce</th>
-                    <th class="px-6 py-3 text-left text-sm font-semibold text-gray-700 uppercase">Data</th>
-                    <th class="px-6 py-3 text-left text-sm font-semibold text-gray-700 uppercase">Kategoria</th>
+                    <th class="px-6 py-4 text-left text-sm font-semibold uppercase">Nazwa</th>
+                    <th class="px-6 py-4 text-left text-sm font-semibold uppercase">Miejsce</th>
+                    <th class="px-6 py-4 text-left text-sm font-semibold uppercase">Data</th>
+                    <th class="px-6 py-4 text-left text-sm font-semibold uppercase">Kategoria</th>
                 </tr>
             </thead>
-            <tbody>
-                
-
+            <tbody class="text-gray-700">
                 {% for event in events %}
-                    <tr class="border-b hover:bg-gray-50" onclick='window.location="{{event.pk}}/"'>
-                        <td class="px-6 py-4 text-sm text-gray-800">{{event.title}}</td>
-                        <td class="px-6 py-4 text-sm text-gray-800">{{event.location}}</td>
-                        <td class="px-6 py-4 text-sm text-gray-800">{{event.date|date:"d.m.Y"}}</td>
-                        <td class="px-6 py-4 text-sm text-gray-800">{{event.category}}</td>
+                    <tr class="border-b hover:bg-gray-200 even:bg-gray-100 transition duration-200" onclick='window.location="{{event.pk}}/"'>
+                        <td class="px-6 py-4 text-sm">{{event.title}}</td>
+                        <td class="px-6 py-4 text-sm">{{event.location}}</td>
+                        <td class="px-6 py-4 text-sm">{{event.date|date:"d.m.Y"}}</td>
+                        <td class="px-6 py-4 text-sm">{{event.category}}</td>
                     </tr>
                 {% endfor %}
             </tbody>
         </table>
     </div>
+    
+
+
 
 {% endblock %}

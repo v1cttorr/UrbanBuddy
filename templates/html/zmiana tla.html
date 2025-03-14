@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s ease;
+        }
+
+        .content {
+            height: 1000px; /* Wysoka zawartość, żeby móc przewijać */
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+
+    </div>
+
+    <script>
+        window.addEventListener('scroll', function() {
+            // Pobieramy aktualną wysokość przewinięcia
+            let scrollPosition = window.scrollY;
+            // Obliczamy procent przewinięcia strony
+            let scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+            let scrollPercentage = (scrollPosition / scrollHeight) * 100;
+
+            let alpha = Math.min(scrollPercentage/100, 1);
+            document.body.style.backgroundColor = `rgba(0,0,0,${alpha})`;
+
+        });
+    </script>
+</body>
+</html>
