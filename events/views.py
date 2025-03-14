@@ -12,7 +12,6 @@ def home(request):
     return redirect('/login')
 
 def events(request):
-    # event_categorys = EventCategory.objects.all()
     events = Event.objects.all().order_by('-date', 'category')
 
     form = EventForm()
@@ -30,7 +29,6 @@ def events(request):
             events = Event.objects.filter(title__icontains=search).order_by('-date', 'category')
 
     context = {
-        # 'event_categorys': event_categorys,
         'events': events,
         'form': form,
     }
