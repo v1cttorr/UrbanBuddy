@@ -41,3 +41,10 @@ class TransportRequest(models.Model):
 
     def __str__(self):
         return self.user.user.username + ' - ' + self.transport.user.user.username
+
+#model for adding points to the map e.g. caffe, restaurant, etc.
+class Point(models.Model):
+    user = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    color = models.CharField(max_length=100)
+    latitude = models.FloatField()
+    longitude = models.FloatField()

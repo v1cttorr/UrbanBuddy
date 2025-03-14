@@ -1,6 +1,6 @@
 from django.http import JsonResponse
 from django.shortcuts import redirect, render
-from .models import Transport, TransportThroughLocation, TransportRequest
+from .models import Transport, TransportThroughLocation, TransportRequest, Point
 from .forms import TransportForm, AlertForm
 from accounts.models import Profile
 from transport.models import Alert
@@ -48,7 +48,7 @@ def transports(request):
         }
         return render(request, 'transport/transports.html', context)
 
-
+    print('A')
     context = {
         'transports': transports,
         'form': form,
@@ -81,8 +81,9 @@ def transport(request, pk):
 @login_required
 def map(request):
     alerts = Alert.objects.all()
+    points = Point.objects.all()
 
-    return render(request, 'transport/map.html', {'alerts': alerts})
+    return render(request, 'transport/map.html', {'alerts': alerts, 'points': points})
 
 def requests(request):
     user = Profile.objects.get(user=request.user)
@@ -116,3 +117,19 @@ def add_alert(request):
         form = AlertForm()
 
     return render(request, 'transport/add_alert.html', {'form': form})
+
+def add_point_to_map(request):
+    if request.method == 'POST':
+        latitude = request.POST.get('latitude')
+        longitude = request.POST.get('longitude')
+        color = request.POST.get('color')
+        Point.objects.create(
+            user=Profile.objects.get(user=request.user),
+            latitude=latitude,
+            longitude=longitude,
+            color=color
+        )
+
+        return JsonResponse({'status': 'success'})
+
+    return JsonResponse({'status': 'failed'})
