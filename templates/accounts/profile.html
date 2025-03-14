@@ -19,6 +19,10 @@
                 <td>{{ user.email }}</td>
             </tr>
             <tr>
+                <td>Interests: </td>
+                <td>{{ user.profile.interests }}</td>
+            </tr>
+            <tr>
                 {% if user.profile.profile_picture %}
                     <img src="{{ user.profile.profile_picture.url }}" alt="Profile Picture">
                 {% else %}

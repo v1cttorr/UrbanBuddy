@@ -1,5 +1,6 @@
 from django.db import models
 from accounts.models import Profile
+import datetime
 
 # Create your models here.
 class Transport(models.Model):
@@ -24,8 +25,8 @@ class TransportThroughLocation(models.Model):
 
 class Alert(models.Model):
     user = models.ForeignKey(Profile, on_delete=models.CASCADE)
-    name = models.TextField()
-    time = models.DateTimeField()
+    name = models.CharField(max_length=100)
+    time = models.DateTimeField(default=datetime.datetime.now)
     address = models.CharField(max_length=100, default='Leżajsk, Mickiewicza 67')
     
     def __str__(self):

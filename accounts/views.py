@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from .forms import RegisterForm, ProfileForm, UserForm, LoginForm
 from django.shortcuts import redirect
 import os
+from .models import Profile
 
 # Create your views here.
 def register(request):
@@ -84,8 +85,7 @@ def logout(request):
 def home(request):
     return redirect('/')
 
-from .models import Profile
-
+@login_required
 def setAvatar(request):
     img = request.POST['imgInfo']
 

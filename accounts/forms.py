@@ -10,8 +10,7 @@ class RegisterForm(UserCreationForm):
     email = forms.EmailField()
     firstname = forms.CharField(max_length=100)
     lastname = forms.CharField(max_length=100)
-    age = forms.IntegerField()
-
+    
     class Meta:
         model = User
         fields = ["firstname", "lastname", "username", "email", "password1", "password2"]
@@ -35,9 +34,6 @@ class RegisterForm(UserCreationForm):
         user.last_name = self.cleaned_data['lastname']
         user.save()
         
-        #TODO idk if this is necessary
-        # profile = Profile(user=user)
-        # profile.save()
         return user
     
 class LoginForm(forms.Form):
