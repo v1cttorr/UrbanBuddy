@@ -5,16 +5,43 @@
 
     Linki: <br>
     {% for transport in transports %}
-        <a href="drive/{{transport.id}}/">{{transport.from_location}} - {{transport.to_location}}</a> <br>
+        <a href="drive/{{transport.id}}/">{{transport.from_location}} - {{transport.to_location}}: {{transport.time|date:"d.m.Y"}}</a>
+            przez: 
+            {% for location in transport.get_transport_through %}
+                {{location}} - 
+            {% endfor %}
+        </a>
+        <br>
     {% endfor %}
+
+
 
     <br> <br>
     <h1>Dodaj transport</h1>
-    {{form.as_p}}
+    <form method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
 
 
-    <!-- DODAC LOKALIZACJE PRZEZ KTORE PRZEJEZDZA -->
-    <!-- LOKALIZACJA -->
-    <!-- LOKALIZACJA -->
-    <!-- DODAJ -->
+        <!-- DODAC LOKALIZACJE PRZEZ KTORE PRZEJEZDZA -->
+        <!-- LOKALIZACJA -->
+        <!-- LOKALIZACJA -->
+        <!-- DODAJ -->
+        
+
+        <div id="add_location" style="background-color: green;" onclick=add_location()>add location</div>
+        <div id="locations"></div>
+        <script>
+            button_add_location = document.getElementById("add_location");
+            function add_location(){
+                let input_add_location = document.createElement("input");
+                input_add_location.placeholder = "add location";
+                input_add_location.name = "locations";
+                let locations = document.getElementById("locations");
+                locations.appendChild(input_add_location);
+            }
+        </script>
+
+        <button type="submit">Dodaj</button>
+    </form>
 {% endblock %}
