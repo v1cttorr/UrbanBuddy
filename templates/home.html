@@ -224,7 +224,11 @@
 
                   <!-- AI Text Output -->
                   <p id="ai-text" class="mt-4 text-gray-700 text-lg leading-relaxed">
-                      {{ events }}
+                      {{ events|safe }}
+                  </p>
+
+                  <p class="mt-4 text-gray-700 text-lg leading-relaxed">
+                    {{ interests|safe }}
                   </p>
               </div>
           </div>

@@ -18,7 +18,7 @@ def interests_ideas(request):
     user_interests = Profile.objects.get(user=request.user).interests
 
     if len(user_interests) < 1:
-        return 'Please add your interests in your profile'
+        return 'Please add your interests in your profile <a href="profile/" style="color: blue;">here</a>'
     api_key = settings.API_KEY
 
     if not api_key:
@@ -39,7 +39,7 @@ def event_ideas(request):
     events = ", ".join(Event.objects.filter(user=request.user).values_list('title', flat=True))
 
     if len(events) < 1:
-        return 'You don\' have any events added yet, please add some'
+        return 'You don\' have any events added yet, please add some <a href="profile/" style="color: blue;">here</a>'
 
     api_key = settings.API_KEY
 
