@@ -8,6 +8,7 @@ from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
+@login_required
 def transports(request):
     transports = Transport.objects.all()
 
@@ -54,6 +55,7 @@ def transports(request):
     }
     return render(request, 'transport/transports.html', context)
 
+@login_required
 def transport(request, pk):
     transport = Transport.objects.get(pk=pk)
     locations = TransportThroughLocation.objects.filter(transport=transport)
@@ -84,6 +86,7 @@ def map(request):
 
     return render(request, 'transport/map.html', {'alerts': alerts, 'points': points})
 
+@login_required
 def requests(request):
     user = Profile.objects.get(user=request.user)
     transport_requests = TransportRequest.objects.filter(transport__user=user)
@@ -94,6 +97,7 @@ def requests(request):
 
     return render(request, 'transport/requests.html', context)
 
+@login_required
 def accept_request(request, pk):
     transport_request = TransportRequest.objects.get(pk=pk)
     transport_request.accepted = True
@@ -117,6 +121,7 @@ def add_alert(request):
 
     return render(request, 'transport/add_alert.html', {'form': form})
 
+@login_required
 def add_point_to_map(request):
     if request.method == 'POST':
         latitude = request.POST.get('latitude')

@@ -2,6 +2,7 @@ from django.shortcuts import redirect, render
 from .models import Event
 from .forms import EventForm
 from gpt.views import interests_ideas, event_ideas
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def home(request):
@@ -12,6 +13,7 @@ def home(request):
         return render(request, 'home.html', {'interests': interests, 'events': events})
     return render(request, 'home.html')
 
+@login_required
 def events(request):
     events = Event.objects.all().order_by('-date', 'category')
 
@@ -36,6 +38,7 @@ def events(request):
 
     return render(request, 'events/events.html', context)
 
+@login_required
 def event(request, pk):
     event = Event.objects.get(id=pk)
 

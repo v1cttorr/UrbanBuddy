@@ -19,12 +19,15 @@
                 <p class="font-semibold font-Poppins tracking-widest drop-shadow-md">UrbanBuddy</p>
             </div>
             <div name="menu" class="flex flex-row items-center gap-8">
+                {% if request.user.is_authenticated %}
                 <a href="/" class="text-[#09151B] font-normal font-Poppins text-md">Home</a>
                 <a href="/events/" class="text-[#09151B] font-normal font-Poppins text-md">Events</a>
                 <a href="/transport/" class="text-[#09151B] font-normal font-Poppins text-md">Transport</a>
                 <a href="/transport/requests/" class="text-[#09151B] font-normal font-Poppins text-md">Transport requests</a>
                 <a href="/transport/map/" class="text-[#09151B] font-normal font-Poppins text-md">Map</a>
                 <a href="/gpt/chat_bot/" class="text-[#09151B] font-normal font-Poppins text-md">Chatbot</a>
+                <a href="/profile/" class="text-[#09151B] font-normal font-Poppins text-md">Profile</a>
+                {% endif %}
             </div>
             <div name="loginAndSignUp" class="flex flex-row items-center gap-5 mr-6">
                 <div class="flex flex-row items-center">

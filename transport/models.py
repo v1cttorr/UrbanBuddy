@@ -6,7 +6,7 @@ import datetime
 class Transport(models.Model):
     user = models.ForeignKey(Profile, on_delete=models.CASCADE)
     description = models.TextField()
-    time = models.DateTimeField()
+    time = models.DateTimeField(default=datetime.datetime.now)
     free_seats = models.IntegerField()
     from_location = models.CharField(max_length=100)
     to_location = models.CharField(max_length=100)
