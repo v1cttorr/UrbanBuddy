@@ -10,7 +10,7 @@ def home(request):
         events = event_ideas(request)
         
         return render(request, 'home.html', {'interests': interests, 'events': events})
-    return redirect('/login')
+    return render(request, 'home.html')
 
 def events(request):
     events = Event.objects.all().order_by('-date', 'category')
