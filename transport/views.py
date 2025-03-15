@@ -33,10 +33,12 @@ def transports(request):
     if request.method == 'GET':
         from_location = request.GET.get('from_location', "")
         destination = request.GET.get('destination', "")
+        location = request.GET.get('location', "")
             
         transports = Transport.objects.filter(
                                                 from_location__icontains=from_location,
-                                                to_location__icontains=destination
+                                                to_location__icontains=destination,
+                                                transportthroughlocation__location__icontains=location
                                               )
 
         context = {
