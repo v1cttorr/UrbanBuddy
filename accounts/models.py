@@ -23,7 +23,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     profile_picture = models.ImageField(upload_to=get_upload_path, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
-    interests = models.TextField(blank=True, null=True)
+    interests = models.TextField(default='[]')
     home_address = models.TextField(blank=True, null=True, default='Leżajsk, Mickiewicza 67')
 
     def __str__(self):

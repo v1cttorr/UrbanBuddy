@@ -3,38 +3,59 @@
 {% block title %}Profile{% endblock %}
 
 {% block content %}
-    <div class="container">
-        <h1>Profile</h1>
-        <table class="table">
-            <tr>
-                <td>Username:</td>
-                <td>{{ user.username }}</td>
-            </tr>
-            <tr>
-                <td>Name:</td>
-                <td>{{ user.first_name }} {{ user.last_name }}</td>
-            </tr>
-            <tr>
-                <td>Email:</td>
-                <td>{{ user.email }}</td>
-            </tr>
-            <tr>
-                <td>Interests: </td>
-                <td>{{ user.profile.interests }}</td>
-            </tr>
-            <tr>
-                {% if user.profile.profile_picture %}
-                    <img src="{{ user.profile.profile_picture.url }}" alt="Profile Picture" width="200px">
-                {% else %}
-                    <img src="/static/img/profile_pic.png" alt="Default Profile Picture" width="200px">
-                {% endif %}
-            </tr>
-            <tr id="controls">
-                <td colspan="2"><a href="/profile/edit/" class="bg-gray-800 hover:bg-gray-900 text-gray font-bold py-2 px-4 rounded">Edit</a></td>
-            </tr>
-        </table>
+<div name="topNav" class="flex flex-row justify-between w-full">
+    <div name="topNav-content" class="flex flex-row justify-between m-6 w-full">
+        <div name="logo" class="flex flex-row gap-2 items-center">
+            <p class="font-semibold font-Poppins tracking-widest drop-shadow-md">UrbanBuddy</p>
+        </div>
+        <div name="loginAndSignUp" class="flex flex-row items-center gap-5 mr-6">
+            <div class="flex flex-row items-center">
+                <a name="logout" href="/logout" class="border-2 border-[#09151B] p-4 shadow-md" style="border-radius: 30px; padding-right: 24px;padding-left: 24px;">Logout</a>
+            </div>
+        </div>
     </div>
-
-    <br>
+</div>
+    <div name="profile-container" class="flex w-full justify-center mt-20">
+        <div name="profile-content" class="flex flex-col items-center justify-center border-2 border-[#CED7DC] w-[60%] rounded-2xl shadow-[3px_3px_0px_#CAD1D6,3px_3px_30px_rgba(0,0,0,0.3)]">
+            <div name="profile-text" class="mt-10">
+                <p class="text-[36px] font-semibold text-[#09151B]">Profile</p>
+            </div>
+            <div name="profile-details" class="flex flex-col w-[90%] items-center mt-8">
+                <table class="table-auto w-full">
+                    <tr class="border-b">
+                        <td class="px-6 py-3 font-semibold">Username:</td>
+                        <td class="px-6 py-3">{{ user.username }}</td>
+                    </tr>
+                    <tr class="border-b">
+                        <td class="px-6 py-3 font-semibold">Name:</td>
+                        <td class="px-6 py-3">{{ user.first_name }} {{ user.last_name }}</td>
+                    </tr>
+                    <tr class="border-b">
+                        <td class="px-6 py-3 font-semibold">Email:</td>
+                        <td class="px-6 py-3">{{ user.email }}</td>
+                    </tr>
+                    <tr class="border-b">
+                        <td class="px-6 py-3 font-semibold">Interests:</td>
+                        <td class="px-6 py-3">{{ user.profile.interests }}</td>
+                    </tr>
+                    <tr class="border-b">
+                        <td class="px-6 py-3 font-semibold">Profile Picture:</td>
+                        <td class="px-6 py-3">
+                            {% if user.profile.profile_picture %}
+                                <img class="w-32 h-32 rounded-full" width="128px" src="{{ user.profile.profile_picture.url }}" alt="Profile Picture">
+                            {% else %}
+                                <img class="w-32 h-32 rounded-full" width="128px" src="/static/img/profile_pic.png" alt="Default Profile Picture">
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr id="controls" class="border-b">
+                        <td colspan="2" class="px-6 py-3 text-center"></td>
+                            <a href="/profile/edit/" class="text-blue-500 hover:underline">Edit</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
 
 {% endblock %}
