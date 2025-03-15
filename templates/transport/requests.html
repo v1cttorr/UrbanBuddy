@@ -1,36 +1,35 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block content %}
 
-    <div class="overflow-x-auto shadow-lg rounded-lg">
-        <table class="min-w-full bg-white border border-gray-300 table-auto">
-            <thead class="bg-gray-200">
-                <tr>
-                    <th class="px-6 py-3 text-left text-sm font-semibold text-gray-700 uppercase">Prośba od</th>
-                    <th class="px-6 py-3 text-left text-sm font-semibold text-gray-700 uppercase">Z</th>
-                    <th class="px-6 py-3 text-left text-sm font-semibold text-gray-700 uppercase">Do</th>
-                    <th class="px-6 py-3 text-left text-sm font-semibold text-gray-700 uppercase">Data</th>
-                    <th class="px-6 py-3 text-left text-sm font-semibold text-gray-700 uppercase"></th>
-                </tr>
-            </thead>
-            <tbody>
-                
-
-                {% for request in transport_requests %}
-                    <tr class="border-b hover:bg-gray-50" onclick='window.location="accept-request/{{request.pk}}/"'>
-                        <td class="px-6 py-4 text-sm text-gray-800">{{request.user}}</td>
-                        <td class="px-6 py-4 text-sm text-gray-800">{{request.transport.from_location}}</td>
-                        <td class="px-6 py-4 text-sm text-gray-800">{{request.transport.to_location}}</td>
-                        <td class="px-6 py-4 text-sm text-gray-800">{{request.created_at|date:"d.m.Y"}}</td>
-                        <td class="px-6 py-4 text-sm text-gray-800">
-                            {% if not request.accepted %}
-                                <a href="accept-request/{{request.pk}}/"><button style="background-color: green;">Accept</button></a>
-                            {% endif %}
-                        </td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
+    {% for requestx in transport_requests %}
+        <!--  -->
+            <div onclick="window.location" name="element" class="bg-white flex flex-row gap-5 shadow-md p-4 rounded-lg items-center" style="background-color: white;">
+                <div name="user" class="flex flex-row items-center">
+                    <img src="{% static 'img/p2.png' %}" class="h-12" alt="user" height="48px" width="48px">
+                    <p class="font-normal font-Poppins text-md">{{requestx.transport.user}}</p>
+                </div>
+                <div name="destination" class="rounded-lg flex flex-row items-center p-4" style="background-color: #cccccc;">
+                    <p>From: <span>{{requestx.transport.from_location}}</span></p>
+                </div>
+                <div name="destination" class="rounded-lg flex flex-row items-center p-4" style="background-color: #cccccc;">
+                    <p>To: <span>{{requestx.transport.to_location}}</span></p>
+                </div>
+                <div name="destination" class="rounded-lg flex flex-row items-center p-4" style="background-color: #cccccc;">
+                    <p>Date: <span>{{requestx.created_at|date:"d.m.Y"}}</span></p>
+                </div>
+                <div name="destination" class="rounded-lg flex flex-row items-center p-4" style="background-color: #cccccc;">
+                    <p>Time: <span>{{requestx.created_at|date:"H:i"}}</span></p>
+                </div>
+            
+                {% if not requestx.accepted %}
+                    <div name="accept" class="rounded-lg flex flex-row items-center p-4 px-6" style="background-color: black; margin-left: auto;">
+                        <a href="accept-request/{{requestx.pk}}"><p class="text-white">Accept</p></a>
+                    </div>
+                {% endif %}
+            </div>
+        {% endfor %}
 
 {% endblock %}
