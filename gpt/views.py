@@ -57,7 +57,6 @@ def event_ideas(request):
 
     return formatted_response
 
-
 @login_required
 def chat_bot(request):
     return render(request, 'gpt/chat_bot.html')#{'form': form, 'response': f'{response}'}
@@ -75,8 +74,5 @@ def ask_chat_bot(request):
     model = genai.GenerativeModel('gemini-2.0-flash-lite')
     
     response = model.generate_content(prompt)
-    
-    
-    
     
     return JsonResponse({'response': response.text})
