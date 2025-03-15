@@ -11,18 +11,29 @@
 
 
 {% block content %}
-    <h2>Find Location by Address</h2>
-    <input type="text" id="address" placeholder="Enter address (e.g., Paris, France)">
-    <button onclick="searchAddress()">Search</button>
-    <select name="color" id="color">
-        <option value="red">Red</option>
-        <option value="green">Green</option>
-        <option value="yellow">Yellow</option>
-    </select> <br>
-    Red - caffee <br>
-    Green - restaurant <br>
-    Yellow - shop <br>
-    Blue - alert <br>
+    <div class="px-6 py-2 rounded-lg">
+        <h2>Find Location by Address</h2>
+            <input type="text" id="address" placeholder="Enter address (e.g., Paris, France)" style="flex: 1; padding: 8px 12px; border: 1px solid #ccc; border-radius: 4px;">
+            <select name="color" id="color" style="padding: 8px 12px; border: 1px solid #ccc; border-radius: 4px;">
+                <option value="red">Red</option>
+                <option value="green">Green</option>
+                <option value="yellow">Yellow</option>
+            </select>
+            <button onclick="searchAddress()" style="background-color: #000; color: #fff; padding: 10px;" class="px-6 py-2 rounded-lg">
+                Create Event
+            </button>
+        <br>
+        Red - caffee <br>
+        Green - restaurant <br>
+        Yellow - shop <br>
+        Blue - alert <br> <br>
+    </div>
+
+    <a href="/transport/add_alert/" class="px-6 py-2 rounded-lg">
+        <button type="submit" style="background-color: #000; color: #fff; padding: 10px;" class="px-6 py-2 rounded-lg">
+            Create Event
+        </button>
+    </a>
     <p id="result"></p>
     <div id="map" style="width: 80%; margin: 0 auto;"></div>
 

@@ -6,6 +6,7 @@
     Date: {{event.date}} <br>
     Description: {{event.description}} <br>
     Location: {{event.location}} <br> -->
+    <div class="px-6 py-6 rounded-lg" style="width: 700px; margin: auto;">
     <img src="{{event.imageURL}}" alt="">
 
     <div class="mb-4">
@@ -24,13 +25,7 @@
     <!-- Category Field -->
     <div class="mb-4">
         <label for="category" class="block text-gray-700 font-medium">Category</label>
-        <!-- <select id="category" name="category" class="w-full mt-2 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-            <option value="">Select Category</option>
-            <option value="conference">Conference</option>
-            <option value="workshop">Workshop</option>
-            <option value="seminar">Seminar</option>
-            <option value="webinar">Webinar</option>
-        </select> -->
+        
         <div type="date" id="category" name="category" class="w-full mt-2 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">{{event.category}} </div>
     </div>
 
@@ -47,5 +42,6 @@
         <!-- <input type="text" id="location" name="location" class="w-full mt-2 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter event location"> -->
         <div type="date" id="location" name="location" class="w-full mt-2 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter event location">{{event.location}}</div>
     </div>    
-
+    </div>
+    
 {% endblock %}

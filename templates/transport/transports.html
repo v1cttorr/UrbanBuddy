@@ -89,28 +89,6 @@
 
         <button type="submit">Dodaj</button>
     </form> -->
-    <div name="topNav" class="flex flex-row justify-between w-full">
-        <div name="topNav-content" class="flex flex-row justify-between m-6 w-full">
-            <div name="logo" class="flex flex-row gap-2 items-center">
-                <p class="font-semibold font-Poppins tracking-widest drop-shadow-md">UrbanBuddy</p>
-            </div>
-            <div name="menu" class="flex flex-row items-center gap-8">
-                <a href="/" class="text-[#09151B] font-normal font-Poppins text-md">Home</a>
-                <a href="/transport/" class="text-[#09151B] font-normal font-Poppins text-md">Transport</a>
-                <a href="/transport/map/" class="text-[#09151B] font-normal font-Poppins text-md">Map</a>
-            </div>
-            <div name="loginAndSignUp" class="flex flex-row items-center gap-5 mr-6">
-                <div class="flex flex-row items-center">
-                    {% if user.is_authenticated %}
-                        <a name="logout" href="/logout/" class="border-2 border-[#09151B] p-4 shadow-md" style="border-radius: 30px; padding-right: 24px;padding-left: 24px;">Logout</a>
-                    {% else %}
-                        <a name="login" href="/login/" class="border-2 border-[#09151B] p-4 shadow-md" style="border-radius: 30px; padding-right: 24px;padding-left: 24px;">Login</a>
-                        <a name="register" href="/register/" class="border-2 border-[#09151B] p-4  text-white bg-[#09151B] shadow-md" style="border-radius: 30px; padding-right: 24px;padding-left: 24px;margin-left:10px">Register</a>
-                    {% endif %}
-                </div>
-            </div>
-        </div>
-    </div>
     <div name="main" class="w-full justify-center mt-12">
         <div name="main-content" class="w-[80%] m-12 ml-10 flex flex-col gap-5">
             <div class="flex flex-row gap-10">
