@@ -2,7 +2,8 @@
 [![Django CI](https://github.com/v1cttorr/hackathon-zst-2025/actions/workflows/django.yml/badge.svg)](https://github.com/v1cttorr/hackathon-zst-2025/actions/workflows/django.yml)
 ## Our app was created to help user with daily activities, such as public transport schedule, diferent accidents and cultural live
 ![alt text](https://github.com/v1cttorr/hackathon-zst-2025/blob/main/main_view.png "Main view")
-[Checkout our project idea on Figma](https://www.figma.com/design/krkFYbeqkRrvrePb9t2kul/Untitled?node-id=284-199&p=f)
+[Checkout our project idea on Figma <img src="https://github.com/v1cttorr/UrbanBuddy/blob/main/figma.png" alt="Description" width="48" height="48">](https://www.figma.com/design/krkFYbeqkRrvrePb9t2kul/Untitled?node-id=284-199&p=f) 
+
 
 
 ___
