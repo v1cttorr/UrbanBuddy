@@ -1,5 +1,8 @@
 {% extends 'base.html' %}
+
 {% load static %}
+{% load widget_tweaks %}
+
 {% block content %}
     <!--Transports <br> <br>  
 
@@ -89,6 +92,63 @@
 
         <button type="submit">Dodaj</button>
     </form> -->
+
+    <h1>Dodaj transport</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="mb-4" style="width: 60%; margin: 0 auto;">
+            <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
+            {% render_field form.description class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" %}
+        </div>
+        <div class="mb-4" style="width: 60%; margin: 0 auto;">
+            <label for="time" class="block text-sm font-medium text-gray-700">Time</label>
+            {% render_field form.time class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" %}
+        </div>
+        <div class="mb-4" style="width: 60%; margin: 0 auto;">
+            <label for="free_seats" class="block text-sm font-medium text-gray-700">Free seats</label>
+            {% render_field form.free_seats class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" %}
+        </div>
+        <div class="mb-4" style="width: 60%; margin: 0 auto;">
+            <label for="from_location" class="block text-sm font-medium text-gray-700">From location</label>
+            {% render_field form.from_location class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" %}
+        </div>
+        <div class="mb-4" style="width: 60%; margin: 0 auto;">
+            <label for="to_location" class="block text-sm font-medium text-gray-700">To location</label>
+            {% render_field form.to_location class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" %}
+        </div>
+        <div class="mb-4" style="width: 60%; margin: 0 auto;">
+            <label for="locations" class="block text-sm font-medium text-gray-700">Location</label>
+            <input name="locations" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+        </div>
+
+
+        
+
+
+        <!-- DODAC LOKALIZACJE PRZEZ KTORE PRZEJEZDZA -->
+        <!-- LOKALIZACJA -->
+        <!-- LOKALIZACJA -->
+        <!-- DODAJ -->
+        
+
+        <!-- <div id="add_location" style="background-color: #000; height: 40px; width: 160px; color: #fff;padding: 10px;" onclick=add_location()>add location</div>4 -->
+        <!-- <button style="background-color: #2f2f2f; color: #fff; padding: 10px; margin-left: 20px;" class="px-6 py-2 rounded-lg" onclick=add_location()>Add location</button>
+        <div id="locations"></div>
+        <script>
+            button_add_location = document.getElementById("add_location");
+            function add_location(){
+                let input_add_location = document.createElement("input");
+                input_add_location.placeholder = "add location";
+                input_add_location.name = "locations";
+                let locations = document.getElementById("locations");
+                locations.appendChild(input_add_location);
+            }
+        </script> -->
+
+        <div class="mb-4" style="width: 60%; margin: 0 auto;">
+            <button style="background-color: #000; color: #fff; padding: 10px; margin: 20px 0;" class="px-6 py-2 rounded-lg" onclick=add_location()>Submit</button>
+        </div>
+    </form>
     
     <div name="main" class="w-full justify-center mt-12">
         <div name="main-content" class="w-[80%] m-12 ml-10 flex flex-col gap-5">
@@ -108,7 +168,7 @@
                     <input type="text" class="m-4 border-none outline-none focus:ring-0 focus:border-transparent p-4 rounded-lg" name="from_location" placeholder="from where" style=" border: none !important; outline: none !important; box-shadow: none !important;">
                     <input type="text" class="m-4 border-none outline-none focus:ring-0 focus:border-transparent p-4 rounded-lg" name="destination" placeholder="destination" style=" border: none !important; outline: none !important; box-shadow: none !important;">
                     
-                    <button type="submit" class="p-4 bg-black rounded-2xl text-white">search</button>
+                    <button type="submit" class="p-4 bg-black rounded-2xl text-white">Search</button>
                 </form>
             </div>
 
