@@ -32,4 +32,8 @@
             </div>
         {% endfor %}
 
+        {% if not transport_requests %}
+        <h3 style="text-align: center;">You don't have any transport requests</h3>
+        {% endif %}
+
 {% endblock %}
