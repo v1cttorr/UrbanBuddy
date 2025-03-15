@@ -58,6 +58,9 @@ class LoginForm(forms.Form):
 class UserForm(forms.ModelForm):
     password = None 
 
+    def __init__(self, *args, **kwargs):
+        super(UserForm, self).__init__(*args, **kwargs)
+        self.fields['username'].help_text = None
     class Meta:
         model = User
         fields = ['username', 'first_name', 'last_name', 'email']

@@ -5,17 +5,44 @@ Edit Profile Info
 {% endblock title %}
 
 {% block content %}
-<h2>Edit Profile</h2>
-<form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-
-    <h3>User Information</h3>
-    {{ user_form.as_p }}
-
-    {{ profile_form.as_p }}
-
-    <button type="submit" class="btn btn-success">Save changes</button>
-    <a href="{% url 'profile' %}" class="btn btn-danger">Cancel</a>
-</form>
+<div name="topNav" class="flex flex-row justify-between w-full">
+    <div name="topNav-content" class="flex flex-row justify-between m-6 w-full">
+        <div name="logo" class="flex flex-row gap-2 items-center">
+            <p class="font-semibold font-Poppins tracking-widest drop-shadow-md">UrbanBuddy</p>
+        </div>
+        <div name="loginAndSignUp" class="flex flex-row items-center gap-5 mr-6">
+            <div class="flex flex-row items-center">
+                <a name="logout" href="/logout" class="border-2 border-[#09151B] p-4 shadow-md" style="border-radius: 30px; padding-right: 24px;padding-left: 24px;">Logout</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div name="edit-profile-container" class="flex w-full justify-center mt-20">
+    <div name="edit-profile-content" class="flex flex-col items-center justify-center border-2 border-[#CED7DC] w-[70%] rounded-2xl shadow-[3px_3px_0px_#CAD1D6,3px_3px_30px_rgba(0,0,0,0.3)]">
+        <div name="edit-profile-text" class="mt-10">
+            <p class="text-[32px] font-semibold text-[#09151B]">Edit Profile Info</p>
+        </div>
+        <div name="edit-profile-form" class="flex flex-col w-[80%] items-center mt-8">
+            <form method="post" enctype="multipart/form-data" class="w-full flex flex-col items-center justify-center">
+                {% csrf_token %}
+                <div class="flex flex-col gap-5 w-full items-center">
+                    <h3 class="text-lg font-semibold text-[#09151B]">User Information</h3>
+                    {{ user_form.as_p }}
+                    <div class="flex flex-col items-center">
+                        {{ profile_form.as_p }}
+                    </div>
+                </div>
+                <div name="edit-profile-buttons" class="w-full flex justify-center mt-6 gap-4">
+                    <button type="submit" class="border-2 border-[#09151B] p-4 shadow-md" style="border-radius: 30px; padding-right: 24px;padding-left: 24px;">
+                        Save changes
+                    </button>
+                    <a href="{% url 'profile' %}" class="border-2 border-[#09151B] p-4 shadow-md text-center" style="border-radius: 30px; padding-right: 24px;padding-left: 24px;">
+                        Cancel
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
 {% endblock %}
