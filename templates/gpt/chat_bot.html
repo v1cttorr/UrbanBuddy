@@ -47,6 +47,7 @@ UrbanBuddy - Chat Bot
     <script>
 
         $("form").submit(function(event) {
+            document.getElementById("response").innerHTML = 'Please wait...';
             event.preventDefault();
             $.ajax({
                 url: 'ask/',
@@ -56,7 +57,9 @@ UrbanBuddy - Chat Bot
                     'X-CSRFToken': '{{ csrf_token }}'
                 },
                 success: function(response) {
-                    document.getElementById("response").innerHTML += "<div class='response'>" + response.response + "</div><br><br><div class='myPrompt'>" + document.getElementById("prompt").value + "</div><br><br>";
+                    document.getElementById("response").innerHTML = 'Proszę czekać...';
+                    document.getElementById("response").innerHTML = "<div class='myPrompt'>" + document.getElementById("prompt").value + "</div><br><br><div class='response'>" + response.response + "</div><br><br>";
+                    document.body.style.cursor='hand';
                 }
             });
         });
