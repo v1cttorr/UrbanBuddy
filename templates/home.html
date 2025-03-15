@@ -3,21 +3,21 @@
 
 {% block title %}Home Page{% endblock %}
 {% block content %}
-    {% if not request.user.is_authenticated %}
+    {% if  not request.user.is_authenticated %}
     <div name="topNav" class="flex flex-row justify-between w-full">
         <div name="topNav-content" class="flex flex-row justify-between m-6 w-full">
             <div name="logo" class="flex flex-row gap-2 items-center">
                 <p class="font-semibold font-Poppins tracking-widest drop-shadow-md">UrbanBuddy</p>
             </div>
             <div name="menu" class="flex flex-row items-center gap-5">
-                <a href="#" class="ml-5 mr-5 p-4 bg-black text-white" style="border-radius: 25px; padding-left:20px; padding-right: 20px; text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.8);">Start</a>
-                <a href="#" class="text-[#09151B] ml-5 mr-5" style="text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);">About</a>
-                <a href="#" class="text-[#09151B] ml-5 mr-5" style="text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);">Features</a>
-                <a href="#" class="text-[#09151B] ml-5 mr-5" style="text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);">Ratings</a>
+                <a href="#start" class="ml-5 mr-5 p-4 bg-black text-white" style="border-radius: 25px; padding-left:20px; padding-right: 20px; text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.8);">Start</a>
+                <a href="#about" class="text-[#09151B] ml-5 mr-5" style="text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);">About</a>
+                <a href="#features" class="text-[#09151B] ml-5 mr-5" style="text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);">Features</a>
+                <a href="#ratings" class="text-[#09151B] ml-5 mr-5" style="text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);">Ratings</a>
             </div>
             <div name="loginAndSignUp" class="flex flex-row items-center gap-5 mr-6">
                 <div class="flex flex-row items-center">
-                    <a name="login" href="/login/" class="border-2 border-[#09151B] p-4 shadow-md" style="border-radius: 30px; padding-right: 24px; padding-left: 24px;">Login</a>
+                    <a name="login" href="/login/" class="border-2 border-[#09151B] p-4 shadow-md" style="border-radius: 30px; padding-right: 24px; padding-left: 24px;">Log in</a>
                     <a name="register" href="/register/" class="border-2 border-[#09151B] p-4 text-white bg-[#09151B] shadow-md" style="border-radius: 30px; padding-right: 24px; padding-left: 24px; margin-left:10px">Register</a>
                 </div>
             </div>
@@ -26,7 +26,7 @@
     <div name="main" class="w-full flex justify-center">
         <div name="main-content" class="flex flex-row m-10 w-[80%] items-center justify-between">
             <div name="left" class="flex flex-col w-1/2">
-                <p class="text-[64px] font-semibold" style="line-height: 1.1">Explore <span class="text-[32px]">with</span></p>
+                <p class="text-[64px] font-semibold" style="line-height: 1.1" id="start">Explore <span class="text-[32px]">with</span></p>
                 <p class="text-[64px] font-semibold" style="line-height:1.1">UrbanBuddy</p>
                 <div name="buttons" class="mt-5 flex gap-4">
                     <a href="#" class="border-2 border-[#09151B] p-4 shadow-md" style="border-radius: 30px; padding-right: 24px; padding-left: 24px;">See more</a>
@@ -74,7 +74,7 @@
     <div name="about" class="flex w-full justify-center">
         <div name="about-content" class="m-10 mt-[10%] flex flex-col">
             <div>
-                <p name="sectionName"  class="border-2 border-black rounded-lg p-2 text-center">About</p>
+                <p name="sectionName"  class="border-2 border-black rounded-lg p-2 text-center" id="about">About</p>
                 <p class="text-[64px]" name="sectionDesc">Meet UrbanBuddy</p>
             </div>
         </div>
@@ -102,7 +102,7 @@
     <div name="featuresContent" class="w-[80%] flex flex-col justify-center items-center mx-auto mt-[5%]">
     
         <!-- Sekcja 1 -->
-        <div name="s2" class="w-[80%] flex flex-row items-center justify-between p-5 mx-auto rounded-xl mt-8 shadow-lg">
+        <div name="s2" class="w-[80%] flex flex-row items-center justify-between p-5 mx-auto rounded-xl mt-8 shadow-lg" id="features">
             <div name="s2-left" class="w-1/2">
                 <p class="text-[32px] font-semibold">Smart Place Search</p>
                 <p>Easily explore the best spots in your city with personalized suggestions.</p>
@@ -191,7 +191,7 @@
             </div>
         </div>
     </div>
-    <div name="about" class="flex w-full justify-center">
+    <div name="about" class="flex w-full justify-center" id="ratings">
         <div name="about-content" class="m-10 mt-[10%] flex flex-col">
             <div>
                 <p name="sectionName"  class="border-2 border-black rounded-lg p-2 text-center">User ratings</p>
@@ -213,14 +213,14 @@
             </div>
             <div class="w-[30%] p-6 bg-white rounded-xl shadow-lg text-black flex flex-col items-center text-center">
                 <img src="{% static 'img/p3.png' %}" alt="User 3"style="width: 64px; height: 64px;" class="w-16 h-16 rounded-full mb-4">
-                <p class="text-lg font-medium">"I love the community insights! Helps me find hidden gems."</p>
-                <p class="mt-3 font-semibold">- James T.</p>
+                <p class="text-lg font-medium">"This was yellow experience for me!"</p>
+                <p class="mt-3 font-semibold">- Karol W.</p>
             </div>
         </div>
     </div>
     <div name="cta" class="w-full flex flex-col items-center justify-center mt-[10%] text-center">
         <p class="font-semibold text-[64px]">What are you waiting for?</p>
-        <a href="#" class="border-2 border-[#09151B] p-6 shadow-md text-[24px] font-semibold mt-6" 
+        <a href="/register" class="border-2 border-[#09151B] p-6 shadow-md text-[24px] font-semibold mt-6" 
            style="border-radius: 30px; padding: 16px 32px;">
            Start now
         </a>
